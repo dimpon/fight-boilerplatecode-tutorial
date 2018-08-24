@@ -3,13 +3,15 @@ package com.dimpon.tutorals.lombok.dto;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 /**
  * @author Dmitrii Ponomarev
  */
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+//@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@RequiredArgsConstructor(staticName = "create")
 public class SimpleDTOWithConstructor {
-    private String name, familyName;
+    private final String name, familyName;
     private int age;
 }

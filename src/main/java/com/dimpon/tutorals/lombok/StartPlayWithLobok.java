@@ -1,6 +1,7 @@
 package com.dimpon.tutorals.lombok;
 
 import com.dimpon.tutorals.lombok.dto.SimpleDTO;
+import com.dimpon.tutorals.lombok.dto.SimpleDTOChains;
 import com.dimpon.tutorals.lombok.dto.SimpleDTOWithLazy;
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,9 +18,11 @@ public class StartPlayWithLobok {
         SimpleDTOWithLazy dto = new SimpleDTOWithLazy();
 
 
-
-
-
+        SimpleDTOChains cha = new SimpleDTOChains();
+        cha.company("co")
+                //.family("fa")
+                .something("so")
+                .name("na");
 
 
     }
