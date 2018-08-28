@@ -16,7 +16,7 @@ import java.util.function.Function;
 
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class RatherComplexBuilder<T> implements Transformer<T> {
+public class RatherComplexTransformer<T> implements Transformer<T> {
 
     @Builder.Default
     final String filterParam = "e1";

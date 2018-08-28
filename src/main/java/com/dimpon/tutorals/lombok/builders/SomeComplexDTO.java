@@ -12,7 +12,7 @@ import java.util.PrimitiveIterator;
 @Builder
 public class SomeComplexDTO {
 
-    private String name, company, familyname;
+    private String name, $company, familyname;
 
     @Singular
     private List<String> options;

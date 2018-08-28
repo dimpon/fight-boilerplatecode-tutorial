@@ -1,14 +1,12 @@
 package com.dimpon.tutorals.lombok;
 
-import com.dimpon.tutorals.lombok.builders.RatherComplexBuilder;
+import com.dimpon.tutorals.lombok.builders.ManyFieldsDTO;
+import com.dimpon.tutorals.lombok.builders.RatherComplexTransformer;
 import com.dimpon.tutorals.lombok.builders.SomeComplexDTO;
 import com.dimpon.tutorals.lombok.builders.Transformer;
-import com.dimpon.tutorals.lombok.dto.SimpleDTO;
 import com.dimpon.tutorals.lombok.dto.SimpleDTOChains;
 import com.dimpon.tutorals.lombok.dto.SimpleDTOWithLazy;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.ArrayList;
 
 /**
  * @author Dmitrii Ponomarev
@@ -31,7 +29,7 @@ public class StartPlayWithLobok {
 
 
         SomeComplexDTO b = SomeComplexDTO.builder()
-                .company("c")
+                //.company("c")
                 .name("n")
                 .option("el1")
                 .option("el2")
@@ -39,21 +37,23 @@ public class StartPlayWithLobok {
                 .build();
 
 
-        Transformer<String> comBuilder = RatherComplexBuilder.<String>builder()
+        Transformer<String> comBuilder = RatherComplexTransformer.<String>builder()
                 .filterParam("e2")
                 .elements("e1")
                 .elements("e2")
                 .elements("e3")
-                .elements("e4")/*
-                .function(s -> s+"_A")
-                .function(s -> s+"_B")
-                .function(s -> s+"_C")*/
+                .elements("e4")
+                .function(s -> s + "_A")
+                .function(s -> s + "_B")
+                .function(s -> s + "_C")
                 .build();
 
 
         String s = comBuilder.doTransformation();
 
-        System.out.println("r="+s);
+        System.out.println("r=" + s);
+
+        ManyFieldsDTO many = ManyFieldsDTO.builder().field1("f1").build();
 
 
     }
