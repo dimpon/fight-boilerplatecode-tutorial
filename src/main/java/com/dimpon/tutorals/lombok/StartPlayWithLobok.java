@@ -6,7 +6,12 @@ import com.dimpon.tutorals.lombok.builders.SomeComplexDTO;
 import com.dimpon.tutorals.lombok.builders.Transformer;
 import com.dimpon.tutorals.lombok.dto.SimpleDTOChains;
 import com.dimpon.tutorals.lombok.dto.SimpleDTOWithLazy;
+import com.dimpon.tutorals.lombok.ulility.MyLovelyUtils;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * @author Dmitrii Ponomarev
@@ -54,6 +59,13 @@ public class StartPlayWithLobok {
         System.out.println("r=" + s);
 
         ManyFieldsDTO many = ManyFieldsDTO.builder().field1("f1").build();
+
+
+        List<String> ele = new ArrayList<String>(){{add("a");add("b");add("c");}};
+        Collection<String> strings = MyLovelyUtils.applyFunctionOnOnCollection(ele, s1 -> s1 + "_1");
+
+
+        System.out.println(MyLovelyUtils.sayHello());
 
 
     }
