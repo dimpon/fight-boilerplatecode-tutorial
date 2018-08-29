@@ -6,6 +6,7 @@ import com.dimpon.tutorals.lombok.builders.SomeComplexDTO;
 import com.dimpon.tutorals.lombok.builders.Transformer;
 import com.dimpon.tutorals.lombok.dto.SimpleDTOChains;
 import com.dimpon.tutorals.lombok.dto.SimpleDTOWithLazy;
+import com.dimpon.tutorals.lombok.npe.NonNullDto;
 import com.dimpon.tutorals.lombok.ulility.MyLovelyUtils;
 import lombok.extern.slf4j.Slf4j;
 
@@ -66,6 +67,10 @@ public class StartPlayWithLobok {
 
 
         System.out.println(MyLovelyUtils.sayHello());
+
+
+        NonNullDto non = new NonNullDto();
+        non.pass(null);
 
 
     }
