@@ -1,8 +1,8 @@
 package com.dimpon.tutorals.lombok.delegation;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.Delegate;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.Collection;
 import java.util.function.Consumer;
@@ -12,19 +12,20 @@ import java.util.function.Consumer;
  */
 
 //@AllArgsConstructor(onConstructor = @__(@Deprecated) )
-@AllArgsConstructor
+//@AllArgsConstructor
+	@RequiredArgsConstructor(staticName = "of")
 public class SimpleDelegate {
 
-	interface AlloweMethods {
-		public void forEach(Consumer action);
+	interface AllowedMethods {
+		 void forEach(Consumer action);
 		int size();
 	}
 
-    interface OverridenMehods {
+    interface OverriddenMehods {
         int size();
     }
 
-	@Delegate(excludes = OverridenMehods.class,types = AlloweMethods.class)
+	@Delegate(excludes = OverriddenMehods.class,types = AllowedMethods.class)
 	private final Collection<String> element;
 
 

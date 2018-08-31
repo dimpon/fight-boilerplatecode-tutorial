@@ -12,9 +12,9 @@ public class Start {
 
 	public static void main(String[] args) {
 
-		SimpleDelegate delegate = new SimpleDelegate(new ArrayList<>());
-
+		SimpleDelegate delegate = SimpleDelegate.of(new ArrayList<>());
 		log.info("size = " + delegate.size());
+		delegate.forEach(o -> {});
 
 	}
 }
