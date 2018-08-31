@@ -14,7 +14,6 @@ import java.util.concurrent.ConcurrentHashMap;
 public class EventManager<T, E extends Event<T>> {
 
     static EventManager manager;
-
     Map<Class<? extends E>, Set<EventHandler<T, E>>> handlers = new ConcurrentHashMap<>();
 
 

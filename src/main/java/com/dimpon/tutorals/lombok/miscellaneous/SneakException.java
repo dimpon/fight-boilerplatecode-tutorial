@@ -20,7 +20,7 @@ import java.util.stream.Stream;
 @Slf4j
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CleanupMe {
+public class SneakException {
 
     String path;
 
@@ -28,10 +28,8 @@ public class CleanupMe {
     public void loadData() {
         log.info("Scan folder...");
 
-        //@Cleanup
-        Stream<Path> stream = Files.find(Paths.get(path), 1, (path1, basicFileAttributes) -> true);
-        stream
-                .sorted(Comparator.naturalOrder())
+        Stream<Path> stream = Files.find(Paths.get(path), 1, (p, a) -> true);
+        stream.sorted(Comparator.naturalOrder())
                 .forEach(this::readOneFile);
 
     }

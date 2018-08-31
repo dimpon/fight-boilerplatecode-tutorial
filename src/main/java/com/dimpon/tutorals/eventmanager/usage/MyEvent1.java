@@ -14,10 +14,10 @@ import lombok.experimental.FieldDefaults;
 public class MyEvent1 implements MyEvent {
 
     EventType type;
-    EventContext context;
+    EventPayLoad context;
 
     @Override
-    public EventContext getPayLoad() {
+    public EventPayLoad getPayLoad() {
         return context;
     }
 }

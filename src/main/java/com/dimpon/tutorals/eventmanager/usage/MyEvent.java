@@ -5,7 +5,7 @@ import com.dimpon.tutorals.eventmanager.common.Event;
 /**
  * @author Dmitrii Ponomarev
  */
-public interface MyEvent extends Event<EventContext> {
+public interface MyEvent extends Event<EventPayLoad> {
 
     enum EventType{
         START,

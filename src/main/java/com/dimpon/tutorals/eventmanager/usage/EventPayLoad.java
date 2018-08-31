@@ -1,9 +1,7 @@
 package com.dimpon.tutorals.eventmanager.usage;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Value;
 import lombok.experimental.Accessors;
 import lombok.experimental.FieldDefaults;
 
@@ -15,7 +13,7 @@ import java.math.BigDecimal;
 @Data
 @Accessors(chain = true, fluent = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class EventContext {
+public class EventPayLoad {
     String company, product;
     BigDecimal amount;
 }

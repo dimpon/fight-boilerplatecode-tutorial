@@ -13,13 +13,14 @@ public class Start {
 
     public static void main(String[] args) {
 
-        EventManager<EventContext, MyEvent> manager = EventManager.getManager();
+        EventManager<EventPayLoad, MyEvent> manager = EventManager.getManager();
 
         new HandlerOne(manager);
         new HandlerTwo(manager);
+        new HandlerThree();
 
 
-        EventContext eventContext = new EventContext()
+        EventPayLoad eventContext = new EventPayLoad()
                 .company("company")
                 .product("Swap")
                 .amount(new BigDecimal(123.5));

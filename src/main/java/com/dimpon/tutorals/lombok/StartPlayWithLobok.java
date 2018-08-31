@@ -6,7 +6,7 @@ import com.dimpon.tutorals.lombok.builders.SomeComplexDTO;
 import com.dimpon.tutorals.lombok.builders.Transformer;
 import com.dimpon.tutorals.lombok.dto.SimpleDTOChains;
 import com.dimpon.tutorals.lombok.dto.SimpleDTOWithLazy;
-import com.dimpon.tutorals.lombok.miscellaneous.CleanupMe;
+import com.dimpon.tutorals.lombok.miscellaneous.SneakException;
 import com.dimpon.tutorals.lombok.npe.NonNullDto;
 import com.dimpon.tutorals.lombok.ulility.MyLovelyUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -70,7 +70,7 @@ public class StartPlayWithLobok {
         System.out.println(MyLovelyUtils.sayHello());
 
 
-        CleanupMe me = new CleanupMe("./src/main/java/com/dimpon/tutorals");
+        SneakException me = new SneakException("./src/main/java/com/dimpon/tutorals");
         me.loadData();
 
         NonNullDto non = new NonNullDto();
