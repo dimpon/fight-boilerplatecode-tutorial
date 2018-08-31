@@ -14,9 +14,6 @@ import javax.validation.valueextraction.ValueExtractor;
 @UnwrapByDefault
 public class ProfileValueExtractor implements ValueExtractor<@ExtractedValue(type = String.class) Profile> {
 
-	public ProfileValueExtractor() {
-		System.out.println("ProfileValueExtractor...");
-	}
 
 	@Override
 	public void extractValues(@ExtractedValue(type = String.class) Profile originalValue, ValueReceiver receiver) {

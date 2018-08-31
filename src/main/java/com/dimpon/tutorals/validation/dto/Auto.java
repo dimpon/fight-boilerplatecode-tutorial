@@ -3,6 +3,7 @@ package com.dimpon.tutorals.validation.dto;
 /**
  * @author Dmitrii Ponomarev
  */
+import com.dimpon.tutorals.validation.custom.Equals;
 import lombok.*;
 import lombok.experimental.Accessors;
 
@@ -27,10 +28,10 @@ public class Auto {
 	@Size(min = 5, message = "Must contain 5 PR numbrs")
 	private List<@NotBlank(message = "PR numbers must not be blank") String> prNumbers;
 
-
 	@Valid
 	private Carport carport;
 
+	@Equals(value = "PROD", message = "Profile must be PROD")
 	@NotBlank(message = "Profile cannot be blank")
 	private Profile profile;
 
@@ -39,7 +40,7 @@ public class Auto {
 
 	private Map<@Email String, @NotNull String> ownersHistory;
 
-	public Optional<@Min(value = 100,message = "Too small distance") Long> getMileage() {
+	public Optional<@Min(value = 100, message = "Too small distance") Long> getMileage() {
 		return Optional.of(mileage);
 	}
 }
