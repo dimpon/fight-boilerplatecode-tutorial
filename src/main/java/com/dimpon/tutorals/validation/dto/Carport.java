@@ -20,10 +20,10 @@ import javax.validation.constraints.NotNull;
 public class Carport {
 
     @NotNull
-    private String modelCode;
+    private String model;
 
     @NotBlank(message = "Engine code cannot be blank")
-    private String engineCode;
+    private String engine;
 
     @Equals(value = "Deutschland",message = "Wrong country")
     private String country;

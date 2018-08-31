@@ -29,9 +29,9 @@ public class Start {
 				.prNumbers(Arrays.asList("a1", "a2", "a3", "a4", "a5"))
 
 				.carport(Carport.of()
-						.modelCode("12335")
-						.engineCode("2ZZ-GE")
-						.country("Russland"))
+						.model("")
+						.engine("")
+						.country(""))
 
 				.ownersHistory(new HashMap<String, String>() {
 					{
