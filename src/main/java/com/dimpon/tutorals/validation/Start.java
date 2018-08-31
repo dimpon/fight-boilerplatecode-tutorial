@@ -2,6 +2,7 @@ package com.dimpon.tutorals.validation;
 
 import com.dimpon.tutorals.validation.dto.Auto;
 import com.dimpon.tutorals.validation.dto.Carport;
+import com.dimpon.tutorals.validation.dto.Profile;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.validation.ConstraintViolation;
@@ -37,7 +38,8 @@ public class Start {
 					{
 						put("peter@spb.ru", "Peter the First");
 					}
-				});
+				})
+				.profile(new Profile(""));
 
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		// ExecutableValidator executableValidator = factory.getValidator().forExecutables();

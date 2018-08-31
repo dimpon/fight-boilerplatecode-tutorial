@@ -27,9 +27,12 @@ public class Auto {
 	@Size(min = 5, message = "Must contain 5 PR numbrs")
 	private List<@NotBlank(message = "PR numbers must not be blank") String> prNumbers;
 
-	@NotBlank
+
 	@Valid
 	private Carport carport;
+
+	@NotBlank(message = "Profile cannot be blank")
+	private Profile profile;
 
 	@Min(value = 1, message = "Auto must have seats")
 	private int seatsNumber;
