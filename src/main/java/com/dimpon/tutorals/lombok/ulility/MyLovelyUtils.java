@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @UtilityClass
 public class MyLovelyUtils {
 
-    public <T> Collection<T> applyFunctionOnOnCollection(Collection<T> in, Function<T, T> function) {
+    public <T, K> Collection<K> applyFunctionOnCollection(Collection<T> in, Function<T, K> function) {
         return in.stream().map(function).collect(Collectors.toCollection(HashSet::new));
     }
 
