@@ -1,5 +1,5 @@
 package com.dimpon.tutorals.eventmanager.common;
 
-public interface EventHandler<T, E extends Event<T>> {
+public interface EventHandler<E extends Event> {
     void handle(E event);
 }

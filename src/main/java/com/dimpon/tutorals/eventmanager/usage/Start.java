@@ -13,7 +13,7 @@ public class Start {
 
     public static void main(String[] args) {
 
-        EventManager<EventPayLoad, MyEvent> manager = EventManager.getManager();
+        EventManager<MyEvent> manager = EventManager.getManager();
 
         new HandlerOne(manager);
         new HandlerTwo(manager);

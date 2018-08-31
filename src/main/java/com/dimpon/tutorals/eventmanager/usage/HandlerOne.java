@@ -9,10 +9,10 @@ import lombok.extern.slf4j.Slf4j;
  * @author Dmitrii Ponomarev
  */
 @Slf4j
-public class HandlerOne implements EventHandler<EventPayLoad, MyEvent> {
+public class HandlerOne implements EventHandler<MyEvent> {
 
 
-    public HandlerOne(EventManager<EventPayLoad, MyEvent> manager) {
+    public HandlerOne(EventManager<MyEvent> manager) {
         manager.registerHandler(MyEvent1.class, this);
     }
 
