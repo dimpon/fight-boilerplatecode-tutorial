@@ -43,7 +43,4 @@ public class RatherComplexTransformer<T> implements Transformer<T> {
         return functions.stream().reduce(Function.identity(), Function::andThen);
     }
 
-    /*private BiFunction<T,String, T> combineFunctions(List<BiFunction<T,String, T>> functions) {
-        return functions.stream().reduce((t,p)->t, BiFunction::andThen);
-    }*/
 }

@@ -28,9 +28,10 @@ public class CleanupMe {
     public void loadData() {
         log.info("Scan folder...");
 
-        @Cleanup
+        //@Cleanup
         Stream<Path> stream = Files.find(Paths.get(path), 1, (path1, basicFileAttributes) -> true);
-        stream.sorted(Comparator.naturalOrder())
+        stream
+                .sorted(Comparator.naturalOrder())
                 .forEach(this::readOneFile);
 
     }

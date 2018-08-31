@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
  */
 @AllArgsConstructor
 //@NoArgsConstructor(access = AccessLevel.PRIVATE)
-@RequiredArgsConstructor(staticName = "create")
+@RequiredArgsConstructor(staticName = "getManager")
 public class SimpleDTOWithConstructor {
     private final String name, familyName;
     private int age;
