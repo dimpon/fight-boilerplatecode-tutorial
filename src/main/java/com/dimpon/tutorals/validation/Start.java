@@ -10,6 +10,8 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import javax.validation.executable.ExecutableValidator;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -22,13 +24,20 @@ public class Start {
 
 		Auto auto = Auto.of()
 				.vin("1234567890abcdef")
-				.mileage(1234L)
+				.mileage(50L)
 				.seatsNumber(4)
-				.prNumbers(Arrays.asList("a1", "a2", "a3"))
+				.prNumbers(Arrays.asList("a1", "a2", "a3", "a4", "a5"))
+
 				.carport(Carport.of()
 						.modelCode("12335")
 						.engineCode("2ZZ-GE")
-						.country("Russland"));
+						.country("Russland"))
+
+				.ownersHistory(new HashMap<String, String>() {
+					{
+						put("peter@spb.ru", "Peter the First");
+					}
+				});
 
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		// ExecutableValidator executableValidator = factory.getValidator().forExecutables();
