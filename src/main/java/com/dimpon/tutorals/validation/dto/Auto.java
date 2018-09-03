@@ -17,6 +17,7 @@ import java.util.Optional;
 @Setter
 @Accessors(chain = true, fluent = true)
 @RequiredArgsConstructor(staticName = "of")
+@ToString
 public class Auto {
 
 	@Size(max = 17, min = 17, message = "Vin must have 17 symbols")
@@ -33,12 +34,15 @@ public class Auto {
 
 	@Equals(value = "PROD", message = "Profile must be PROD")
 	@NotBlank(message = "Profile cannot be blank")
+	@Max(value = 4, message = "More then 4 symbols")
 	private Profile profile;
 
 	@Min(value = 1, message = "Auto must have seats")
 	private int seatsNumber;
 
-	private Map<@Email String, @NotNull String> ownersHistory;
+	private boolean broken = false;
+
+	private Map<@Email(message = "need email like key of map") String, @NotNull String> ownersHistory;
 
 	public Optional<@Min(value = 100, message = "Too small distance") Long> getMileage() {
 		return Optional.of(mileage);

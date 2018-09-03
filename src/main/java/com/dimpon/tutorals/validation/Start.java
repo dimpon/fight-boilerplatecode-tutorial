@@ -1,23 +1,22 @@
 package com.dimpon.tutorals.validation;
 
-import com.dimpon.tutorals.validation.dto.Auto;
-import com.dimpon.tutorals.validation.dto.Carport;
-import com.dimpon.tutorals.validation.dto.Profile;
+import com.dimpon.tutorals.validation.custom.ValidateAutoAndOwner;
+import com.dimpon.tutorals.validation.dto.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import javax.validation.constraints.NotNull;
 import javax.validation.executable.ExecutableValidator;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * @author Dmitrii Ponomarev
+ * @author Dmitrii Ponomarev JSR 380
  */
 @Slf4j
 public class Start {
@@ -41,12 +40,28 @@ public class Start {
 				})
 				.profile(new Profile("PROD"));
 
+		Owner owner = Owner.of().age(23).name("Dmitrii").drunk(false);
+
+
+		OwnerAndAutoPair pair = new OwnerAndAutoPair(owner,auto);
+
+
+
+
+
+
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		// ExecutableValidator executableValidator = factory.getValidator().forExecutables();
 
 		Validator validator = factory.getValidator();
 
-		Set<ConstraintViolation<Auto>> validate = validator.validate(auto);
+		//Set<ConstraintViolation<Auto>> validate = validator.validate(auto);
+
+
+		Set<ConstraintViolation<OwnerAndAutoPair>> validate = validator.validate(pair);
+
+		//Set<ConstraintViolation<Owner>> validate = validator.validate(owner);
+
 
 		log.info("\n\n" +
 				validate.stream()
@@ -54,5 +69,7 @@ public class Start {
 						.collect(Collectors.joining("\n")));
 
 	}
+
+
 
 }
