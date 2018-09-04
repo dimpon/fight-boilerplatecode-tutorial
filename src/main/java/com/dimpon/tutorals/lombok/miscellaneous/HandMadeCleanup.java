@@ -11,10 +11,10 @@ import java.io.IOException;
  * @author Dmitrii Ponomarev
  */
 @Slf4j
-public class HandMadeCleanup implements Closeable {
+public class HandMadeCleanup {
 
-    @Override
-    public void close() throws IOException {
+
+    public void dispose() throws IOException {
         log.info("close me");
     }
 
@@ -26,7 +26,7 @@ public class HandMadeCleanup implements Closeable {
     @SneakyThrows(IOException.class)
     public static void main(String[] args) {
 
-        @Cleanup
+        @Cleanup("dispose")
         HandMadeCleanup cleanup = new HandMadeCleanup();
         cleanup.doSomeAction();
 

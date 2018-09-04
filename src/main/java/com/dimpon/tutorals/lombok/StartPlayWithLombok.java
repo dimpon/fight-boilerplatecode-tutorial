@@ -17,10 +17,14 @@ import java.util.List;
  * @author Dmitrii Ponomarev
  */
 @Slf4j
-public class StartPlayWithLobok {
+public class StartPlayWithLombok {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+
+        Thread.sleep(10000);
+
+
 
         log.info("hello zusamen!!!");
         SimpleDTOWithLazy dto = new SimpleDTOWithLazy();
