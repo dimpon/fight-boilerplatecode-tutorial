@@ -21,7 +21,7 @@ public @interface ValidateNObjects {
 
     Class<? extends Payload>[] payload() default {};
 
-    Class<? extends ValidateNObjectsValidator.ValidateFewObjectsCommand> command();
+    Class<? extends ValidateNObjectsValidator.ValidateNObjectsCommand> command();
 
     Element[] value();
 

@@ -20,7 +20,7 @@ public class ValidateNObjectsValidator implements ConstraintValidator<ValidateNO
 
 	private List<Class<?>> arguments = Collections.EMPTY_LIST;
 
-	private Class<? extends ValidateFewObjectsCommand> command;
+	private Class<? extends ValidateNObjectsCommand> command;
 
 	@Override
 	public void initialize(ValidateNObjects annotation) {
@@ -45,12 +45,12 @@ public class ValidateNObjectsValidator implements ConstraintValidator<ValidateNO
 			throw new IllegalArgumentException("Neew a command with validation logic");
 
 		Class<?>[] classes = arguments.toArray(new Class<?>[0]);
-		ValidateFewObjectsCommand comm = command.getConstructor(classes).newInstance(values);
+		ValidateNObjectsCommand comm = command.getConstructor(classes).newInstance(values);
 		return comm.validate();
 	}
 
 	@FunctionalInterface
-	interface ValidateFewObjectsCommand {
+	interface ValidateNObjectsCommand {
 		boolean validate();
 	}
 
