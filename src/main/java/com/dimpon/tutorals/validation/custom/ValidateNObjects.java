@@ -6,20 +6,31 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-import static java.lang.annotation.ElementType.CONSTRUCTOR;
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@Constraint(validatedBy = AutoAndOwnerValidator.class)
-@Target({ METHOD, CONSTRUCTOR, PARAMETER })
+@Constraint(validatedBy = ValidateNObjectsValidator.class)
+@Target({ METHOD, CONSTRUCTOR })
 @Retention(RUNTIME)
 @Documented
-public @interface AutoAndOwner {
+public @interface ValidateNObjects {
     String message() default
             "If you drank you can drive only broken car :))";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
+
+    Class<? extends ValidateNObjectsValidator.ValidateFewObjectsCommand> command();
+
+    Element[] value();
+
+    @Target({ ANNOTATION_TYPE })
+    @Retention(RUNTIME)
+    @Documented
+    public @interface Element {
+        Class<?> value();
+    }
+
+
 }

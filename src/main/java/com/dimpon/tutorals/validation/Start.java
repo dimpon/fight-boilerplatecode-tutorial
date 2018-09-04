@@ -1,7 +1,8 @@
 package com.dimpon.tutorals.validation;
 
-import com.dimpon.tutorals.validation.custom.AutoAndOwner;
+import com.dimpon.tutorals.validation.custom.ValidateNObjects;
 import com.dimpon.tutorals.validation.custom.AutoAndOwnerTuple;
+import com.dimpon.tutorals.validation.custom.ValidateNObjectsCommandAutoAndOwner;
 import com.dimpon.tutorals.validation.dto.*;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -36,9 +37,16 @@ public class Start {
 		new Start().validateAutoAndOwnerUsingTuple();
 	}
 
-	@AutoAndOwner
+	@ValidateNObjects(value = {
+			@ValidateNObjects.Element(Auto.class),
+			@ValidateNObjects.Element(Owner.class)
+	},
+			command = ValidateNObjectsCommandAutoAndOwner.class,
+			message = "What are you doing, man???"
+	)
 	private void validateAutoAndOwnerWithCrossParameterConstraint(Auto auto, Owner owner) {
 		log.info(auto.toString() + owner.toString());
+		//do some actions, or further validation
 	}
 
 	private void validateWithTuples(@AutoAndOwnerTuple Pair<Auto, Owner> pair) {
