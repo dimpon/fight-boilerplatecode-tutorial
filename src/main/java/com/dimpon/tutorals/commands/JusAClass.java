@@ -12,6 +12,7 @@ package com.dimpon.tutorals.commands;
         @CommandElement("a"),
         @CommandElement("b")
 })
+
 public class JusAClass {
 
 
