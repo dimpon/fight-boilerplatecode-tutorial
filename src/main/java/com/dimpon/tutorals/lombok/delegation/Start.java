@@ -16,5 +16,17 @@ public class Start {
 		log.info("size = " + delegate.size());
 		delegate.forEach(o -> {});
 
+		Octopus o = new Octopus();
+		Fisher f = new Fisher();
+
+		OctopusDelegate delegate1 = OctopusDelegate.of(o,f);
+
+		delegate1.head();
+		delegate1.leg1();
+		delegate1.catchIt(o);
+		log.info(delegate1.iSeeOctopus());
+
+		//delegate1.sayWhoIam();   //lombok is not able to generate method, it is ambiguous
+
 	}
 }

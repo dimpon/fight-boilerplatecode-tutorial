@@ -13,7 +13,7 @@ import java.util.function.Consumer;
 
 //@AllArgsConstructor(onConstructor = @__(@Deprecated) )
 //@AllArgsConstructor
-	@RequiredArgsConstructor(staticName = "of")
+@RequiredArgsConstructor(staticName = "of")
 public class SimpleDelegate {
 
 	interface AllowedMethods {

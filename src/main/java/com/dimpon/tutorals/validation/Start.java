@@ -37,6 +37,8 @@ public class Start {
 		new Start().validateAutoAndOwnerUsingTuple();
 	}
 
+	/////////////////////////////////////////
+
 	@ValidateNObjects(value = {
 			@ValidateNObjects.Element(Auto.class),
 			@ValidateNObjects.Element(Owner.class)
@@ -48,6 +50,9 @@ public class Start {
 		log.info(auto.toString() + owner.toString());
 		//do some actions, or further validation
 	}
+
+	/////////////////////////////////////////////
+
 
 	private void validateWithTuples(@AutoAndOwnerTuple Pair<Auto, Owner> pair) {
 		log.info(pair.getLeft().toString() + pair.getRight().toString());
@@ -70,6 +75,9 @@ public class Start {
 
 	}
 
+
+	/////////////////////////////////////////////
+
 	private void validateAutoAndOwner() {
 
 		Auto auto = Auto.of();
@@ -86,6 +94,8 @@ public class Start {
 		print(constraintViolations);
 
 	}
+
+	//////////////////////////////////////////////
 
 	@SneakyThrows
 	private void validateAutoAndOwnerUsingTuple() {
@@ -104,6 +114,8 @@ public class Start {
 		print(constraintViolations);
 
 	}
+
+	////////////////////////////////////////////////
 
 	private void validateAuto() {
 		Auto auto = Auto.of()

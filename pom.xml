@@ -69,6 +69,15 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>quickfix</groupId>
+            <artifactId>quickfixj-all</artifactId>
+            <version>1.5.3</version>
+            <!--<scope>compile</scope>-->
+        </dependency>
+
+
+
         <!-- <dependency>
              <groupId>org.junit.jupiter</groupId>
              <artifactId>junit-jupiter-api</artifactId>
