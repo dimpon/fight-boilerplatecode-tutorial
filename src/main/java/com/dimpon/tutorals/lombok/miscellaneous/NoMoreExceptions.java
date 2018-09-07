@@ -13,7 +13,7 @@ public class NoMoreExceptions {
     public void checkSum(BigDecimal sum) {
 
         if (sum.signum() == -1)
-            throw new WrongSumException();
+            throw new WrongSumException("the sum is negative");
 
     }
 

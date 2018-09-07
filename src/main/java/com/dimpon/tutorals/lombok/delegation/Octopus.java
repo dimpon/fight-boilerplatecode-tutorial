@@ -21,9 +21,9 @@ public class Octopus extends Mollusk {
     }
 
 
-    public String sayWhoIam(){
+    /*public String sayWhoIam(){
         return "Octopus!!!!";
-    }
+    }*/
 
 
 }

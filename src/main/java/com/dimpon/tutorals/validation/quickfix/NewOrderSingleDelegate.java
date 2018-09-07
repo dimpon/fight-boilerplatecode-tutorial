@@ -2,6 +2,7 @@ package com.dimpon.tutorals.validation.quickfix;
 
 import com.dimpon.tutorals.validation.quickfix.annotations.IsLimitAndPriceIsSet;
 import lombok.Getter;
+import lombok.Lombok;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Delegate;
 import quickfix.fix44.NewOrderSingle;

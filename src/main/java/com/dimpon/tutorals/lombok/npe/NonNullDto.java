@@ -14,6 +14,7 @@ public class NonNullDto {
 
     public void pass(@NonNull String p){
 
+        p.toLowerCase();
     }
 
 
