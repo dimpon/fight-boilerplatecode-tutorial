@@ -27,6 +27,4 @@ public class Transformator<T, R> {
 						(b, a) -> b.andThen(t -> a.apply(t, source)));
 	}
 
-
-
 }

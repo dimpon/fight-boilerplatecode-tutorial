@@ -52,7 +52,8 @@ public class Start {
                 .operation((tradeRequest, fixData) -> tradeRequest.amount(fixData.params.get("amount")))
                 .operation((tradeRequest, fixData) -> tradeRequest.bank(fixData.params.get("bank")))
                 .operation(complex)
-                .build().transform(new TradeRequest());
+                .build()
+                .transform(new TradeRequest());
 
         log.info(tr.toString());
 
