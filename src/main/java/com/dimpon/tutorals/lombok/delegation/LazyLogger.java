@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 @RequiredArgsConstructor(staticName = "getLogger")
 public class LazyLogger implements Logger {
 
-	private final Function<Class<?>, Logger> $function = LoggerFactory::getLogger;
+	private final static Function<Class<?>, Logger> $function = LoggerFactory::getLogger;
 	private Logger $logger = null;
 	private final Class<?> clazz;
 
