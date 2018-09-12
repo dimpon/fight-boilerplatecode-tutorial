@@ -12,7 +12,7 @@ import java.util.function.BiFunction;
 @Builder
 public class Transformator<T, R> {
 
-	final R source;
+	private final R source;
 
 	@Singular
 	private List<BiFunction<T, R, T>> operations;

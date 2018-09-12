@@ -13,7 +13,7 @@ import java.util.function.Function;
  * @author Dmitrii Ponomarev
  */
 @RequiredArgsConstructor(staticName = "getLogger")
-public class LazyLogger2 implements Logger {
+public class LazyLoggerThreadSafe implements Logger {
 
 	private static final Function<Class<?>, Logger> $function = LoggerFactory::getLogger;
 
