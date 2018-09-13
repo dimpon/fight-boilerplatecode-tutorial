@@ -1,6 +1,7 @@
 package com.dimpon.tutorals.lombok.delegation;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,8 @@ public class Start {
 
 	private static final Logger LOG = LazyLoggerThreadSafe.getLogger(Start.class);
 
+
+	private static final Logger LOG1 = LoggerFactory.getLogger(Start.class);
 
 	public static void main(String[] args) {
 

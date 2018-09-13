@@ -5,5 +5,5 @@ import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CommandElement {
-    String value();
+    String[] value() default {};
 }

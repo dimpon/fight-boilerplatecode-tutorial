@@ -1,6 +1,8 @@
 package com.dimpon.tutorals.lombok.builders;
 
+import java.util.stream.Stream;
+
 @FunctionalInterface
 public interface Transformer<T> {
-    T doTransformation();
+    Stream<T> doTransformation();
 }

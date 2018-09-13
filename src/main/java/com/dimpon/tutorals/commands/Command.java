@@ -12,6 +12,8 @@ public @interface Command {
     Class<? extends CommandGranular> value();
     CommandElement[] elements() default {};
 
+    Class<? extends Annotation>[] annotations() default {};
+
 
 
     @Deprecated

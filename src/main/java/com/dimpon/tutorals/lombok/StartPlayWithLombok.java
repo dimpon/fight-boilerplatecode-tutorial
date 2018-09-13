@@ -12,6 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author Dmitrii Ponomarev
@@ -47,7 +49,7 @@ public class StartPlayWithLombok {
 
 
         Transformer<String> comBuilder = RatherComplexTransformer.<String>builder()
-                .filterParam("e2")
+                //.filterParam("e2")
                 .elements("e1")
                 .elements("e2")
                 .elements("e3")
@@ -59,9 +61,9 @@ public class StartPlayWithLombok {
 
 
 
-        String s = comBuilder.doTransformation();
+        Stream<String> s = comBuilder.doTransformation();
 
-        System.out.println("r=" + s);
+        System.out.println("r=" + s.collect(Collectors.joining(" - ")));
 
         ManyFieldsDTO many = ManyFieldsDTO.builder().field1("f1").build();
 
