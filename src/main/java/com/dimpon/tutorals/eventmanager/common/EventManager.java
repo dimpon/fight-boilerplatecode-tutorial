@@ -10,11 +10,11 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * @author Dmitrii Ponomarev
  */
-@FieldDefaults(level = AccessLevel.PRIVATE)
+
 public class EventManager<E extends Event> {
 
-	static EventManager manager = new EventManager();
-	Map<Class<? extends E>, Set<EventHandler<E>>> handlers = new ConcurrentHashMap<>();
+	private static EventManager manager = new EventManager();
+	private Map<Class<? extends E>, Set<EventHandler<E>>> handlers = new ConcurrentHashMap<>();
 
 	@Synchronized
 	@SuppressWarnings("unchecked")
@@ -23,7 +23,6 @@ public class EventManager<E extends Event> {
 	}
 
 	public void registerHandler(final Class<? extends E> clazz, final EventHandler<E> handler) {
-
 		if (handlers.containsKey(clazz))
 			handlers.get(clazz).add(handler);
 		else
