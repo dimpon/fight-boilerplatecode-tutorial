@@ -24,5 +24,4 @@ public class LazyLoggerThreadSafe implements Logger {
 	private Logger createLogger() {
 		return $function.apply(clazz);
 	}
-
 }
