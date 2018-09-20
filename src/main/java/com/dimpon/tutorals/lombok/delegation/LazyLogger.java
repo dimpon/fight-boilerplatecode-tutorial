@@ -27,5 +27,4 @@ public class LazyLogger implements Logger {
 
 		return $logger;
 	}
-
 }

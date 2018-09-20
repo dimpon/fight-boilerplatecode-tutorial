@@ -13,6 +13,8 @@ import java.util.function.Supplier;
 public class LazyStaticFieldThreadSafe<I,C>  {
 	private  Supplier<C> supplier;
 
+	private Class<? extends I> realClass;
+
     public void setSupplier(Supplier<C> supplier) {
         this.supplier = supplier;
     }
@@ -73,6 +75,7 @@ public class LazyStaticFieldThreadSafe<I,C>  {
             return new HelloDollyImpl();});
 
 
+        Supplier<HelloDolly> d = HelloDollyImpl::new;
 
 
         HelloDolly realObject = factory.getProxy();
