@@ -18,7 +18,7 @@ public class LazyFactory<I> {
 	private Supplier<I> supplier;
 
 	@SuppressWarnings("unchecked")
-	private I getLazyObject() {
+	private I getProxy() {
 		return (I) Proxy.newProxyInstance(
 				LazyFactory.class.getClassLoader(),
 				new Class[] { interfaceClass },
@@ -26,17 +26,17 @@ public class LazyFactory<I> {
 	}
 
 	public static <T> T getLazy(Class<T> interfaceClass, Supplier<T> supplier) {
-		return new LazyFactory<T>(interfaceClass, supplier).getLazyObject();
+		return new LazyFactory<T>(interfaceClass, supplier).getProxy();
 	}
 
 	private class DynamicInvocationHandler implements InvocationHandler {
 
 		@Getter(lazy = true)
-		private final I internalObject = supplier.get();
+		private final I realObject = supplier.get();
 
 		@Override
 		public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-			return method.invoke(getInternalObject(), args);
+			return method.invoke(getRealObject(), args);
 		}
 	}
 }
