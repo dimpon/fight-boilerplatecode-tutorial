@@ -1,4 +1,4 @@
-package com.dimpon.tutorals.lombok.builders;
+package com.dimpon.tutorals.lombok.builders.sample3;
 
 /**
  * @author Dmitrii Ponomarev
@@ -10,9 +10,7 @@ import lombok.Singular;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -21,9 +19,6 @@ import java.util.stream.Stream;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class RatherComplexTransformer<T> implements Transformer<T> {
-
-	//@Builder.Default
-	//final String filterParam = "e1";
 
 	@Singular("elements")
 	List<T> elements;
@@ -36,16 +31,35 @@ public class RatherComplexTransformer<T> implements Transformer<T> {
 
 		return elements.stream()
 				.peek(e -> log.info(e.toString()))
-				//.filter(t -> t.toString().equals(filterParam))
-				.peek(e -> log.info(e.toString()))
 				.map(t -> combineFunctions(operations).apply(t));
-
-
-				//.findAny().orElseThrow(() -> new NullPointerException("it's me"));
 	}
 
 	private Function<T, T> combineFunctions(List<Function<T, T>> functions) {
 		return functions.stream().reduce(Function.identity(), Function::andThen);
 	}
+}
 
+
+
+
+
+@Slf4j
+class Starter {
+	public static void main(String[] args) {
+
+		Transformer<String> comBuilder = RatherComplexTransformer.<String> builder()
+
+				.elements("e1")
+				.elements("e2")
+				.elements("e3")
+				.elements("e4")
+				.function(s -> s + "_A")
+				.function(s -> s + "_B")
+				.function(s -> s + "_C")
+				.build();
+
+		Stream<String> s = comBuilder.doTransformation();
+
+		log.info("r=" + s.collect(Collectors.joining(" - ")));
+	}
 }

@@ -1,4 +1,4 @@
-package com.dimpon.tutorals.lombok.builders.builderinbuilder;
+package com.dimpon.tutorals.lombok.builders.sample5_transformator;
 
 import lombok.Builder;
 import lombok.Singular;
@@ -26,5 +26,4 @@ public class Transformator<T, R> {
 				.reduce((t, r) -> t,
 						(b, a) -> b.andThen(t -> a.apply(t, source)));
 	}
-
 }

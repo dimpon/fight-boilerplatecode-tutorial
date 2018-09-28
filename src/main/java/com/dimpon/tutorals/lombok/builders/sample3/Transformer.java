@@ -1,4 +1,4 @@
-package com.dimpon.tutorals.lombok.builders;
+package com.dimpon.tutorals.lombok.builders.sample3;
 
 import java.util.stream.Stream;
 

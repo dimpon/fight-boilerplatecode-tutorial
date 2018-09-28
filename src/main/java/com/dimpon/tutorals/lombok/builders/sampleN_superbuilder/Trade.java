@@ -1,4 +1,4 @@
-package com.dimpon.tutorals.lombok.builders;
+package com.dimpon.tutorals.lombok.builders.sampleN_superbuilder;
 
 import lombok.experimental.SuperBuilder;
 
