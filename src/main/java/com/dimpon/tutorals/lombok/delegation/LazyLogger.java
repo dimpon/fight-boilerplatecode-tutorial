@@ -1,6 +1,7 @@
 package com.dimpon.tutorals.lombok.delegation;
 
 import jdk.nashorn.internal.runtime.options.Option;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Delegate;
 import org.slf4j.Logger;
@@ -13,7 +14,7 @@ import java.util.function.Supplier;
 /**
  * @author Dmitrii Ponomarev
  */
-@RequiredArgsConstructor(staticName = "getLogger")
+@AllArgsConstructor(staticName = "getLogger")
 public class LazyLogger implements Logger {
 
 	private final static Function<Class<?>, Logger> $function = LoggerFactory::getLogger;
@@ -24,7 +25,12 @@ public class LazyLogger implements Logger {
 	private Logger getLogger() {
 		if ($logger == null)
 			$logger = $function.apply(clazz);
-
 		return $logger;
 	}
+
+
 }
+
+
+
+

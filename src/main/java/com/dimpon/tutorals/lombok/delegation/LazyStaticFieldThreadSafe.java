@@ -99,7 +99,7 @@ public class LazyStaticFieldThreadSafe<I,C>  {
 
         @Override
         public void hello() {
-            System.out.println("hello");
+            System.out.println("sayHello");
         }
     }
 

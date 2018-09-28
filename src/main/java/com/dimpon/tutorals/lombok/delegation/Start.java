@@ -35,7 +35,7 @@ public class Start {
 		Class parameter = (Class)type.getActualTypeArguments()[0];
 		System.out.println(parameter);
 
-		LOGGER.log(Level.SEVERE,"hello");
+		LOGGER.log(Level.SEVERE,"sayHello");
 
 		SimpleDelegate delegate = SimpleDelegate.of(new ArrayList<>());
         LOG.info("size = " + delegate.size());
