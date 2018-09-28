@@ -47,6 +47,8 @@ public class Start {
 
 		};
 
+
+
 		TradeRequest tr = Transformator.<TradeRequest, FixData> builder()
 				.source(new FixData())
 				.operation((tradeRequest, fixData) -> tradeRequest.currency(fixData.params.get("currency")))
@@ -55,6 +57,9 @@ public class Start {
 				.operation(complex)
 				.build()
 				.transform(new TradeRequest());
+
+
+
 
 		log.info(tr.toString());
 
@@ -78,6 +83,9 @@ public class Start {
 	@Data
 	@Accessors(chain = true, fluent = true)
 	private static class TradeRequest {
-		String currency, amount, bank;
+		String
+				currency,
+				amount,
+				bank;
 	}
 }

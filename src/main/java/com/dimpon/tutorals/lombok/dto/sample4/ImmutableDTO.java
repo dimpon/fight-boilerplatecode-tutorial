@@ -1,4 +1,4 @@
-package com.dimpon.tutorals.lombok.dto;
+package com.dimpon.tutorals.lombok.dto.sample4;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;

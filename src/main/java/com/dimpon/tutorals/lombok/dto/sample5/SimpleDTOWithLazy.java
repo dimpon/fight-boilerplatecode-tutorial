@@ -1,4 +1,4 @@
-package com.dimpon.tutorals.lombok.dto;
+package com.dimpon.tutorals.lombok.dto.sample5;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,17 +19,11 @@ public class SimpleDTOWithLazy {
 
 
     private Map<String, String> fillSettings() {
-
         log.info("fillSettings");
-
         return new HashMap<String, String>() {{
             put("key1", "value1");
             put("key2", "value2");
             put("key3", "value3");
         }};
     }
-
-
-
-
 }

@@ -1,40 +1,81 @@
 package com.dimpon.tutorals.commands;
 
+import java.util.Date;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Command(value = CommandGo.class, elements = {
-        @CommandElement("a"),
-        @CommandElement("b")
+		@CommandElement("a"),
+		@CommandElement("b")
 }, annotations = {
-        Override.class,
-        Deprecated.class,
-        CommandElement.class
+		Override.class,
+		Deprecated.class,
+		CommandElement.class
 })
 @Command(value = CommandGo.class, elements = {
-        @CommandElement({"a","b"}),
-        @CommandElement("b")
+		@CommandElement({ "a", "b" }),
+		@CommandElement("b")
 })
 @Command(value = CommandGo.class, elements = {
-        @CommandElement("a"),
-        @CommandElement("b")
+		@CommandElement("a"),
+		@CommandElement("b")
 })
 
+@Command.GoFaraway
 @Bird
-public  class  JusAClass {
+public class JusAClass {
 
-    @Bird
-    void me(@Bird int a) throws @Bird Exception{
+	@Bird
+	private static final Logger LOG = LoggerFactory.getLogger(JusAClass.class);
 
-        @Bird
-        Object o = new @Bird Object();
+	@Bird
+	void me(@Bird int a) throws @Bird Exception {
+
+		@Bird
+		Object o = new @Bird Object();
+
+		o = new @Bird Object();
+
+		if (o == null)
+			new @Bird Object();
+
+		List<@Bird String> li;
+
+		if (true) {
+			// throw new @Bird Exception();
+			@Bird
+			Exception e = new Exception();
+			throw e;
+		}
+
+		@Bird
+		boolean xxx = (o == null);
+
+		if (isDo()) {
+
+		} else {
+
+		}
 
 
-        if(o==null)
-            new @Bird Object();
+		Date dd = new Date();
 
+		try {
+			Date.parse("sdfdf");
+		} catch (@Bird Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-        List<@Bird String> li;
-    }
+	@Bird
+	private boolean  isDo() {
+		return true;
+	}
 
+	@Bird
+	private static void isDoDo() {
+
+	}
 
 }

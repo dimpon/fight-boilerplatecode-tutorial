@@ -1,12 +1,11 @@
 package com.dimpon.tutorals.lombok;
 
 import com.dimpon.tutorals.lombok.builders.*;
-import com.dimpon.tutorals.lombok.dto.SimpleDTOChains;
-import com.dimpon.tutorals.lombok.dto.SimpleDTOWithLazy;
+import com.dimpon.tutorals.lombok.dto.sample2.SimpleDTOChains;
+import com.dimpon.tutorals.lombok.dto.sample5.SimpleDTOWithLazy;
 import com.dimpon.tutorals.lombok.miscellaneous.SneakException;
 import com.dimpon.tutorals.lombok.npe.NonNullDto;
 import com.dimpon.tutorals.lombok.ulility.MyLovelyUtils;
-import lombok.experimental.SuperBuilder;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;

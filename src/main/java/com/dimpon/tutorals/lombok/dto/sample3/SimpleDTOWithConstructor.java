@@ -1,4 +1,4 @@
-package com.dimpon.tutorals.lombok.dto;
+package com.dimpon.tutorals.lombok.dto.sample3;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

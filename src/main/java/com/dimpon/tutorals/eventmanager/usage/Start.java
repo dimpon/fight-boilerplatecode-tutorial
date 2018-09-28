@@ -30,7 +30,7 @@ public class Start {
         manager.fireEvent(new MyEvent2(MyEvent.EventType.IN_PROGRESS, eventContext));
 
 
-        EventContextExt.of("name");
+        EventContextExt.of();
 
     }
 }

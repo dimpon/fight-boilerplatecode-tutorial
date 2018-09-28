@@ -22,4 +22,12 @@ public @interface Command {
     @interface $List {
         Command[] value();
     }
+
+
+
+    @Target(value = ElementType.TYPE)
+    @Retention(RUNTIME)
+    public @interface GoFaraway {
+
+    }
 }
