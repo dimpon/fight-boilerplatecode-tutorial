@@ -1,4 +1,4 @@
-package com.dimpon.tutorals.lombok.delegation;
+package com.dimpon.tutorals.lombok.delegation.sample3_logger;
 
 import jdk.nashorn.internal.runtime.options.Option;
 import lombok.AllArgsConstructor;

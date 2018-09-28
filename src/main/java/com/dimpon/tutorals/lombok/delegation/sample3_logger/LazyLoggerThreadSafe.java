@@ -1,4 +1,4 @@
-package com.dimpon.tutorals.lombok.delegation;
+package com.dimpon.tutorals.lombok.delegation.sample3_logger;
 
 import lombok.AccessLevel;
 import lombok.Getter;

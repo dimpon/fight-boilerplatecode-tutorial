@@ -1,4 +1,4 @@
-package com.dimpon.tutorals.lombok.delegation.lazy;
+package com.dimpon.tutorals.lombok.delegation.multipurpose_lazy_factory;
 
 /**
  * @author Dmitrii Ponomarev
@@ -16,6 +16,6 @@ public class LazyDolly implements Dolly {
 
     @Override
     public void hello() {
-        System.out.println("Hello1 I'm very lazy");
+        System.out.println("Hello1 I'm very multipurpose_lazy_factory");
     }
 }

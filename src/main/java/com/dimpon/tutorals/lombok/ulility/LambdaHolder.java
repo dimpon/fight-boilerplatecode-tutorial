@@ -1,4 +1,4 @@
-package com.dimpon.tutorals.lombok.delegation;
+package com.dimpon.tutorals.lombok.ulility;
 
 import lombok.experimental.UtilityClass;
 import org.slf4j.Logger;

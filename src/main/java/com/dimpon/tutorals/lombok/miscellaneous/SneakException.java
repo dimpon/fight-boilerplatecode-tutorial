@@ -29,6 +29,7 @@ public class SneakException {
         log.info("Scan folder...");
 
         Stream<Path> stream = Files.find(Paths.get(path), 1, (p, a) -> true);
+
         stream.sorted(Comparator.naturalOrder())
                 .forEach(this::readOneFile);
 
@@ -36,6 +37,15 @@ public class SneakException {
 
     private void readOneFile(Path path) {
         log.info(path.toString());
+    }
+
+
+    ////////////////////////
+
+
+    public static void main(String[] args) {
+        SneakException me = new SneakException("./src/main/java/com/dimpon/tutorals");
+        me.loadData();
     }
 
 

@@ -1,4 +1,4 @@
-package com.dimpon.tutorals.lombok.delegation.lazy;
+package com.dimpon.tutorals.lombok.delegation.multipurpose_lazy_factory;
 
 /**
  * @author Dmitrii Ponomarev
