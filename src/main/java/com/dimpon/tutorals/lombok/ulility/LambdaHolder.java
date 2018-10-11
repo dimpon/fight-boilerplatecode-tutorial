@@ -11,5 +11,5 @@ import java.util.function.Function;
  */
 @UtilityClass
 public class LambdaHolder {
-    Function<Class<?>,Logger> createLogger = LoggerFactory::getLogger;
+    Function<Class<?>,Logger> logger = LoggerFactory::getLogger;
 }

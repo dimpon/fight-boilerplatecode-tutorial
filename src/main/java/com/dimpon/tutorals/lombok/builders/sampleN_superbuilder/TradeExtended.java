@@ -9,6 +9,8 @@ import lombok.experimental.SuperBuilder;
 public class TradeExtended extends Trade {
 	private String approver;
 
+
+
 	public static void main(String[] args) {
 		Trade trade = TradeExtended.builder()
 				.approver("approver")

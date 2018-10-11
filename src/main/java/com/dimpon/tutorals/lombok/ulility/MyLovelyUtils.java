@@ -26,4 +26,6 @@ public class MyLovelyUtils {
         return "goodbye";
     }
 
+    String justConst = "const";
+
 }

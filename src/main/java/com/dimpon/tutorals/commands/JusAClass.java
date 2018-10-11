@@ -40,6 +40,8 @@ public class JusAClass {
 		if (o == null)
 			new @Bird Object();
 
+
+		@Bird
 		List<@Bird String> li;
 
 		if (true) {
@@ -49,7 +51,10 @@ public class JusAClass {
 			throw e;
 		}
 
-		@Bird
+		@Bird({ "a", "b", "c" })
+		Object s;
+
+		@Bird({ "a", "b", "c", "o.toString()" })
 		boolean xxx = (o == null);
 
 		if (isDo()) {
@@ -57,7 +62,6 @@ public class JusAClass {
 		} else {
 
 		}
-
 
 		Date dd = new Date();
 
@@ -69,7 +73,7 @@ public class JusAClass {
 	}
 
 	@Bird
-	private boolean  isDo() {
+	private boolean isDo() {
 		return true;
 	}
 

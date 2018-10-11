@@ -10,9 +10,12 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 public @interface Command {
     Class<? extends CommandGranular> value();
+
     CommandElement[] elements() default {};
 
     Class<? extends Annotation>[] annotations() default {};
+
+    String[] params() default {};
 
 
 
@@ -30,4 +33,5 @@ public @interface Command {
     public @interface GoFaraway {
 
     }
+
 }
