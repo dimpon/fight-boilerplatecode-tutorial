@@ -16,10 +16,14 @@ public class HandMadeCleanup {
 
     public void dispose() throws IOException {
         log.info("close me");
+        if(true)
+            throw new IOException();
     }
 
-    public void doSomeAction(){
+    public void doSomeAction() throws IOException{
         log.info("do action");
+        if(true)
+            throw new IOException();
     }
 
 
