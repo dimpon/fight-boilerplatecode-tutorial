@@ -1,7 +1,6 @@
 package com.dimpon.tutorals.validation.custom;
 
-import com.dimpon.tutorals.validation.dto.Carport;
-import com.dimpon.tutorals.validation.dto.Profile;
+import com.dimpon.tutorals.validation.sample1.Profile;
 
 import javax.validation.valueextraction.ExtractedValue;
 import javax.validation.valueextraction.UnwrapByDefault;

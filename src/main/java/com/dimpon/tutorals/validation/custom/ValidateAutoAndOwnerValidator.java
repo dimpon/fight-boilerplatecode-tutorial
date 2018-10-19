@@ -1,6 +1,6 @@
 package com.dimpon.tutorals.validation.custom;
 
-import com.dimpon.tutorals.validation.dto.OwnerAndAutoPair;
+import com.dimpon.tutorals.validation.sample1.OwnerAndAutoPair;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 

@@ -1,10 +1,9 @@
-package com.dimpon.tutorals.validation.dto;
+package com.dimpon.tutorals.validation.sample1;
 
-import com.dimpon.tutorals.validation.custom.Equals;
+import com.dimpon.tutorals.validation.sample1.validator.Equals;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import lombok.Value;
 import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotBlank;

@@ -1,6 +1,5 @@
 package com.dimpon.tutorals.validation.quickfix.validators;
 
-import com.dimpon.tutorals.validation.custom.Equals;
 import com.dimpon.tutorals.validation.quickfix.NewOrderSingleDelegate;
 import com.dimpon.tutorals.validation.quickfix.annotations.IsLimitAndPriceIsSet;
 import lombok.SneakyThrows;

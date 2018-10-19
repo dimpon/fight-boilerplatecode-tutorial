@@ -3,7 +3,7 @@ package com.dimpon.tutorals.validation;
 import com.dimpon.tutorals.validation.custom.ValidateNObjects;
 import com.dimpon.tutorals.validation.custom.AutoAndOwnerTuple;
 import com.dimpon.tutorals.validation.custom.ValidateNObjectsCommandAutoAndOwner;
-import com.dimpon.tutorals.validation.dto.*;
+import com.dimpon.tutorals.validation.sample1.*;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.ImmutablePair;
@@ -16,7 +16,6 @@ import javax.validation.ValidatorFactory;
 import javax.validation.groups.Default;
 import java.lang.reflect.Method;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * @author Dmitrii Ponomarev JSR 380
@@ -32,7 +31,7 @@ public class Start {
 
 		new Start().validateAuto();
 
-		new Start().validateAutoAndOwner();
+		//new Start().validateAutoAndOwner();
 
 		new Start().validateAutoAndOwnerUsingTuple();
 	}
@@ -71,14 +70,14 @@ public class Start {
 				.forExecutables()
 				.validateParameters(this, method, new Object[] { auto, owner }, Default.class);
 
-		print(constraintViolations);
+		PrintUtils.print(constraintViolations);
 
 	}
 
 
 	/////////////////////////////////////////////
 
-	private void validateAutoAndOwner() {
+	/*private void validateAutoAndOwner() {
 
 		Auto auto = Auto.of();
 		Owner owner = Owner.of().age(23).name("Dmitrii").drunk(true);
@@ -91,9 +90,9 @@ public class Start {
 
 		Set<ConstraintViolation<OwnerAndAutoPair>> constraintViolations = validator.validate(pair);
 
-		print(constraintViolations);
+		PrintUtils.print(constraintViolations);
 
-	}
+	}*/
 
 	//////////////////////////////////////////////
 
@@ -111,7 +110,7 @@ public class Start {
 				.forExecutables()
 				.validateParameters(this, method, new Object[] { ImmutablePair.of(auto, owner) }, Default.class);
 
-		print(constraintViolations);
+		PrintUtils.print(constraintViolations);
 
 	}
 
@@ -142,26 +141,15 @@ public class Start {
 
 		Set<ConstraintViolation<Auto>> constraintViolations = validator.validate(auto);
 
-		print(constraintViolations);
+		PrintUtils.print(constraintViolations);
 	}
 
 	@SneakyThrows
 	private void validateConstructor() {
-		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 
-		Set<ConstraintViolation<Producer>> constraintViolations = factory.getValidator().forExecutables()
-				.validateConstructorParameters(Producer.class.getConstructor(String.class), new String[] { "s" }, Default.class);
-
-		print(constraintViolations);
 
 	}
 
-	private <T> void print(Set<ConstraintViolation<T>> violations) {
 
-		log.info("\n\n" +
-				violations.stream()
-						.map(v -> v.getMessage() + ": " + v.getInvalidValue())
-						.collect(Collectors.joining("\n")));
-	}
 
 }

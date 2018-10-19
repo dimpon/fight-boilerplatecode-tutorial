@@ -1,9 +1,7 @@
-package com.dimpon.tutorals.validation.custom;
+package com.dimpon.tutorals.validation.sample1.validator;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 /**
  * @author Dmitrii Ponomarev

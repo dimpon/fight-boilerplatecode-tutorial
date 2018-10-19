@@ -1,6 +1,6 @@
-package com.dimpon.tutorals.validation.dto;
+package com.dimpon.tutorals.validation.sample1;
 
-import com.dimpon.tutorals.validation.custom.Equals;
+import com.dimpon.tutorals.validation.sample1.validator.Equals;
 import com.dimpon.tutorals.validation.custom.ValidateAutoAndOwner;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,6 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import javax.validation.constraints.AssertFalse;
-import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Min;
 
 /**

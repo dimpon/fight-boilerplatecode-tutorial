@@ -1,7 +1,5 @@
 package com.dimpon.tutorals.validation.quickfix;
 
-import com.dimpon.tutorals.validation.dto.Auto;
-import lombok.Lombok;
 import lombok.extern.slf4j.Slf4j;
 import quickfix.field.OrdType;
 import quickfix.field.Price;

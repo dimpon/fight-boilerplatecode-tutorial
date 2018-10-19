@@ -1,9 +1,9 @@
-package com.dimpon.tutorals.validation.dto;
+package com.dimpon.tutorals.validation.sample1;
 
 /**
  * @author Dmitrii Ponomarev
  */
-import com.dimpon.tutorals.validation.custom.Equals;
+import com.dimpon.tutorals.validation.sample1.validator.Equals;
 import lombok.*;
 import lombok.experimental.Accessors;
 
