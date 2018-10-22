@@ -15,28 +15,28 @@ public class Start {
 
     static Method m1;
 
-	private Bird b = Watcher.<Bird>builder()
+    private Bird b = Watcher.<Bird>builder()
             //.function(bird -> {bird.fly(); return bird;})
             .original(new BirdImpl())
             .interfaceClass(Bird.class)
-            .interceptor(m1,(proxy, args) -> {log.info("intercept !!!");})
+            .addListener("", Bird::eat)
+            .addListener((proxy, args) -> log.info("...xxx"), Bird.class.getMethods()[1])
+            //.addListener((proxy, args) -> {log.info("...fly");},"fly")
+            .addListener((proxy, args) -> log.info("...eat"), "eat", String.class)
             .build()
             .getProxy();
 
 
-
-
-
-	private void playWithBird(){
-	    b.fly();
-	    b.eat("corn");
-	    b.breed(3);
+    private void playWithBird() {
+        b.fly();
+        b.eat("corn");
+        b.breed(3);
 
         Optional.<String>empty();
 
     }
 
-    Function<String,String> f = (a)-> "s";
+    Function<String, String> f = (a) -> "s";
 
     public static void main(String[] args) throws Exception {
 
