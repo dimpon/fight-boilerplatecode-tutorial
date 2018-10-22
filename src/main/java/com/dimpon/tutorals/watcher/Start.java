@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Method;
 import java.util.Optional;
+import java.util.function.Function;
 
 /**
  * @author Dmitrii Ponomarev
@@ -18,7 +19,7 @@ public class Start {
             //.function(bird -> {bird.fly(); return bird;})
             .original(new BirdImpl())
             .interfaceClass(Bird.class)
-            .interceptor(m1,() -> {log.info("interceptor !!!");})
+            .interceptor(m1,(proxy, args) -> {log.info("intercept !!!");})
             .build()
             .getProxy();
 
@@ -35,8 +36,9 @@ public class Start {
 
     }
 
-    public static void main(String[] args) throws Exception {
+    Function<String,String> f = (a)-> "s";
 
+    public static void main(String[] args) throws Exception {
 
         m1 = Bird.class.getDeclaredMethod("fly");
 

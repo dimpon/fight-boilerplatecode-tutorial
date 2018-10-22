@@ -21,7 +21,7 @@ public class Watcher<I> {
 
 
 	@Singular
-	private Map<Method,Runnable> interceptors;
+	private Map<Method,ListenerCommand<I>> interceptors;
 
 	/*@Singular
 	private List<Function<? super Bird,  Bird>> functions;
@@ -46,18 +46,26 @@ public class Watcher<I> {
 		return new Watcher<T>(interfaceClass, supplier).getProxy();
 	}*/
 
+
 	private class DynamicInvocationHandler implements InvocationHandler {
 
 		//@Getter(lazy = true)
 		//private final I realObject = supplier.get();
 
+		@SuppressWarnings("unchecked")
 		@Override
 		public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
-			interceptors.getOrDefault(method,() -> {}).run();
 
+
+			interceptors.getOrDefault(method,(a,b) -> {}).fire((I)proxy,args);
 			return method.invoke(original, args);
 		}
+	}
+
+	@FunctionalInterface
+	public interface ListenerCommand<I>{
+		void fire(I proxy,Object[] args);
 	}
 
 }
