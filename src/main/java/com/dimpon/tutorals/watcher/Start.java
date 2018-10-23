@@ -12,42 +12,43 @@ import java.util.function.Function;
 @Slf4j
 public class Start {
 
+	static Method m1;
 
-    static Method m1;
+	private Bird b = Watcher.<Bird> builder()
+			// .function(bird -> {bird.fly(); return bird;})
+			.original(new BirdImpl())
+			.interfaceClass(Bird.class)
+			.addListener("", Bird::eat)
+			.addListener((proxy, args) -> log.info("...xxx 1"), bc -> bc.getMethods()[1])
+			.addListener((proxy, args) -> log.info("...xxx 2"), bc -> bc.getDeclaredMethod("breed", int.class))
+			// .addListener((proxy, args) -> {log.info("...fly");},"fly")
+			.addListener((proxy, args) -> log.info("...xxx 3"), "eat", String.class)
+			.build()
+			.getProxy();
 
-    private Bird b = Watcher.<Bird>builder()
-            //.function(bird -> {bird.fly(); return bird;})
-            .original(new BirdImpl())
-            .interfaceClass(Bird.class)
-            .addListener("", Bird::eat)
-            .addListener((proxy, args) -> log.info("...xxx"), Bird.class.getMethods()[1])
-            //.addListener((proxy, args) -> {log.info("...fly");},"fly")
-            .addListener((proxy, args) -> log.info("...eat"), "eat", String.class)
-            .build()
-            .getProxy();
 
 
-    private void playWithBird() {
-        b.fly();
-        b.eat("corn");
-        b.breed(3);
+	private void playWithBird() {
+		b.fly();
+		b.eat("corn");
+		b.breed(3);
 
-        Optional.<String>empty();
+		Optional.<String> empty();
 
-    }
+	}
 
-    Function<String, String> f = (a) -> "s";
+	Function<String, String> f = (a) -> "s";
 
-    public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception {
 
-        m1 = Bird.class.getDeclaredMethod("fly");
+		m1 = Bird.class.getDeclaredMethod("fly");
 
-        log.info(m1.toString());
+		log.info(m1.toString());
 
-        Runtime.getRuntime().traceMethodCalls(true);
+		Runtime.getRuntime().traceMethodCalls(true);
 
-        Start s = new Start();
-        s.playWithBird();
-    }
+		Start s = new Start();
+		s.playWithBird();
+	}
 
 }

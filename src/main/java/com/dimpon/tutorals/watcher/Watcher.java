@@ -27,6 +27,7 @@ public class Watcher<I> {
 
 
         private Map<Method, ListenerCommand<I>> interceptors = new LinkedHashMap<>();
+		private Class<I> interfaceClass;
 
         public <P> WatcherBuilder<I> addListener(P val, BiConsumer<I, P> function) {
 
@@ -36,18 +37,15 @@ public class Watcher<I> {
 
         //private Map<Method, ListenerCommand<I>> interceptors = new LinkedHashMap<>();
 
-        public WatcherBuilder<I> addListener(ListenerCommand<I> command, Method method) {
-            WatcherBuilder.this.interceptors.put(method, command);
+        public WatcherBuilder<I> addListener(ListenerCommand<I> command,FunctionWithExceptions<Class<I>,Method> method) {
+            WatcherBuilder.this.interceptors.put(method.apply(WatcherBuilder.this.interfaceClass), command);
             return this;
         }
 
         @SneakyThrows
         public WatcherBuilder<I> addListener(ListenerCommand<I> command, String name, Class<?>... params) {
-
-            Method method = interfaceClass.getDeclaredMethod(name, params);
-
+            Method method = WatcherBuilder.this.interfaceClass.getDeclaredMethod(name, params);
             WatcherBuilder.this.interceptors.put(method, command);
-
             return this;
         }
     }
@@ -99,4 +97,13 @@ public class Watcher<I> {
         void fire(I proxy, Object[] args);
     }
 
+	public interface FunctionWithExceptions<T,R> extends Function<T,R>{
+
+		R applyWithException(T t) throws Exception;
+
+		@SneakyThrows
+		default R apply(T t){
+			return applyWithException(t);
+		}
+	}
 }

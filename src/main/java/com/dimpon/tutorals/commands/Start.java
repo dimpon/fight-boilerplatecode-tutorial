@@ -62,11 +62,11 @@ public class Start {
 
 
         Start start = new Start();
-        start.setSumo(SumoDTO.class, SumoDTO::getAge, 12);
+       /* start.setSumo(SumoDTO.class, SumoDTO::getAge, 12);
 
         start.setSumo(SumoDTO.class, SumoDTO::getName, "xsxs");
 
-        String sumo = start.getSumo(SumoDTO.class, SumoDTO::getName);
+        String sumo = start.getSumo(SumoDTO.class, SumoDTO::getName);*/
 
 
         String s = "aaa.bb.ccc";
