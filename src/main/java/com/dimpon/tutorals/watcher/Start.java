@@ -28,12 +28,34 @@ public class Start {
 
 
 
+	private Bird bb = Watcher.<Bird> builder()
+			.original(new BirdImpl())
+            .interfaceClass(Bird.class)
+
+			.addListener((proxy, args) -> {
+
+
+			    log.info("*** eat:"+args[0]);
+
+
+
+			}, bc -> bc.getDeclaredMethod("eat", String.class))
+
+
+			.build()
+			.getProxy();
+
+
+
 	private void playWithBird() {
-		b.fly();
+
+	    bb.eat("Corn");
+
+		/*b.fly();
 		b.eat("corn");
 		b.breed(3);
 
-		Optional.<String> empty();
+		Optional.<String> empty();*/
 
 	}
 
@@ -41,11 +63,11 @@ public class Start {
 
 	public static void main(String[] args) throws Exception {
 
-		m1 = Bird.class.getDeclaredMethod("fly");
+		/*m1 = Bird.class.getDeclaredMethod("fly");
 
 		log.info(m1.toString());
 
-		Runtime.getRuntime().traceMethodCalls(true);
+		Runtime.getRuntime().traceMethodCalls(true);*/
 
 		Start s = new Start();
 		s.playWithBird();

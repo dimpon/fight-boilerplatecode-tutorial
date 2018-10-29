@@ -17,6 +17,7 @@ public class Start {
 */
 
 	private static final Logger LOG = LazyLoggerThreadSafe.getLogger(Start.class);
+
 	private static final Logger LOGGY = LoggerFactory.getLogger(Start.class);
 	private static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(Start.class.getName());
 

@@ -8,10 +8,12 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * @author Dmitrii Ponomarev
@@ -20,8 +22,6 @@ import java.util.function.Function;
 @Slf4j
 //@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Watcher<I> {
-
-    //private final I original;
 
     public static class WatcherBuilder<I> {
 
@@ -33,9 +33,6 @@ public class Watcher<I> {
 
             return this;
         }
-
-
-        //private Map<Method, ListenerCommand<I>> interceptors = new LinkedHashMap<>();
 
         public WatcherBuilder<I> addListener(ListenerCommand<I> command,FunctionWithExceptions<Class<I>,Method> method) {
             WatcherBuilder.this.interceptors.put(method.apply(WatcherBuilder.this.interfaceClass), command);
@@ -54,13 +51,6 @@ public class Watcher<I> {
     //@Singular
     private final Map<Method, ListenerCommand<I>> interceptors;
 
-	/*@Singular
-	private List<Function<? super Bird,  Bird>> functions;
-*/
-	/*public <B extends Bird> Watcher listen(Consumer<? extends B> property) {
-		return this;
-	}*/
-
 
     private Class<I> interfaceClass;
     private I original;
@@ -72,11 +62,6 @@ public class Watcher<I> {
                 new Class[]{interfaceClass},
                 new Watcher.DynamicInvocationHandler());
     }
-
-	/*public static <T> T getLazy(Class<T> interfaceClass, Supplier<T> supplier) {
-		return new Watcher<T>(interfaceClass, supplier).getProxy();
-	}*/
-
 
     private class DynamicInvocationHandler implements InvocationHandler {
 
@@ -97,6 +82,7 @@ public class Watcher<I> {
         void fire(I proxy, Object[] args);
     }
 
+    @FunctionalInterface
 	public interface FunctionWithExceptions<T,R> extends Function<T,R>{
 
 		R applyWithException(T t) throws Exception;

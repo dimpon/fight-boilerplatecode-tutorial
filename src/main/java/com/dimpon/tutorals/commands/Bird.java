@@ -11,4 +11,12 @@ import static java.lang.annotation.RetentionPolicy.*;
 @Retention(RUNTIME)
 public @interface Bird {
 	String[] value() default {};
+
+	Xoxox xxx() default Xoxox.X1;
+
+	enum Xoxox {
+		X1, X2;
+	}
+
+	static class $L{}
 }

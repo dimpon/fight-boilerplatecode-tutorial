@@ -14,6 +14,10 @@ public class HappyDolly implements Dolly {
 
 	@Override
 	public void hello() {
+
+		@Deprecated
+		String wilo;
+
 		System.out.println("Yo-hou!");
 	}
 }
