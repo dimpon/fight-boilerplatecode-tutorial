@@ -65,9 +65,6 @@ public class Watcher<I> {
 
     private class DynamicInvocationHandler implements InvocationHandler {
 
-        //@Getter(lazy = true)
-        //private final I realObject = supplier.get();
-
         @SuppressWarnings("unchecked")
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {

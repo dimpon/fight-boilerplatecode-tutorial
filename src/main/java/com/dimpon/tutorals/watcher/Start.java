@@ -34,13 +34,9 @@ public class Start {
 
 			.addListener((proxy, args) -> {
 
-
 			    log.info("*** eat:"+args[0]);
 
-
-
 			}, bc -> bc.getDeclaredMethod("eat", String.class))
-
 
 			.build()
 			.getProxy();
@@ -51,6 +47,10 @@ public class Start {
 
 	    bb.eat("Corn");
 
+
+	    b.eat("Rise");
+		b.breed(3);
+		b.fly();
 		/*b.fly();
 		b.eat("corn");
 		b.breed(3);

@@ -20,6 +20,9 @@ public class BirdImpl implements Bird {
 	@Override
 	public void breed(int eggs) {
 		log.info("breed");
+
+		throw new NullPointerException("all eggs are died");
+
 	}
 
 	public void kaka() {
