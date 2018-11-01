@@ -10,7 +10,7 @@ public class UtiUti {
 
 
 
-	public <T extends RuntimeException> String getGobo(String val, T ex) throws T {
+	public <T extends Throwable> String getGobo(String val, T ex) throws T {
 		if (val == null)
 
 			throw ex;
@@ -18,7 +18,7 @@ public class UtiUti {
 	}
 
 
-	public <T extends RuntimeException> String getGobo1(String val, Function<String, T> ex) throws T {
+	public <T extends Throwable> String getGobo1(String val, Function<String, T> ex) throws T {
 
 		if (val == null)
 			throw ex.apply(val);
@@ -30,6 +30,7 @@ public class UtiUti {
 		UtiUti u = new UtiUti();
 		String x = "zzz";
 		u.getGobo(null, new NullPointerException("  this is null" + x));
-        u.getGobo1("", NullPointerException::new);
+
+        u.getGobo1("xxx", HoundException::new);
 	}
 }

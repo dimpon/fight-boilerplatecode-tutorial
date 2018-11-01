@@ -1,6 +1,5 @@
-package com.dimpon.tutorals.validation.sample1;
+package com.dimpon.tutorals.validation.sample2;
 
-import com.dimpon.tutorals.validation.sample1.validator.Equals;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -23,8 +22,5 @@ public class Carport {
 
     @NotBlank(message = "Engine code cannot be blank")
     private String engine;
-
-    @Equals(value = "Deutschland",message = "Wrong country")
-    private String country;
 
 }

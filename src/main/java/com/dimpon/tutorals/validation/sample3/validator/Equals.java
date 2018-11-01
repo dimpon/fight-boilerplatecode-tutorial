@@ -1,13 +1,14 @@
-package com.dimpon.tutorals.validation.sample1.validator;
+package com.dimpon.tutorals.validation.sample3.validator;
 
-import javax.validation.Constraint;
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
-import javax.validation.Payload;
 
-import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import javax.validation.Constraint;
+import javax.validation.Payload;
 
 @Target(FIELD)
 @Retention(RUNTIME)
@@ -15,7 +16,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = { EqualsValidator.class })
 public @interface Equals {
 
-	String message() default "Must be greater than {value}";
+	String message() default "Must be equal to {value}";
 
 	Class<?>[] groups() default {};
 

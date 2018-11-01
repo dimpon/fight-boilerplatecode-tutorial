@@ -1,20 +1,17 @@
 package com.dimpon.tutorals.validation;
 
 import com.dimpon.tutorals.validation.custom.ValidateNObjects;
-import com.dimpon.tutorals.validation.custom.AutoAndOwnerTuple;
 import com.dimpon.tutorals.validation.custom.ValidateNObjectsCommandAutoAndOwner;
-import com.dimpon.tutorals.validation.sample1.*;
+import com.dimpon.tutorals.validation.sample2.Carport;
+import com.dimpon.tutorals.validation.sample2.Owner;
+import com.dimpon.tutorals.validation.sample1_1.*;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.tuple.ImmutablePair;
-import org.apache.commons.lang3.tuple.Pair;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import javax.validation.groups.Default;
-import java.lang.reflect.Method;
 import java.util.*;
 
 /**
@@ -53,25 +50,23 @@ public class Start {
 	/////////////////////////////////////////////
 
 
-	private void validateWithTuples(@AutoAndOwnerTuple Pair<Auto, Owner> pair) {
-		log.info(pair.getLeft().toString() + pair.getRight().toString());
-	}
+
 
 	@SneakyThrows
 	private void validateWithCrossParameterConstraint() {
 		Auto auto = Auto.of();
-		Owner owner = Owner.of().age(23).name("Dmitrii").drunk(true);
+		/*XOwner owner = XOwner.of().age(23).name("Dmitrii").drunk(true);
 
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 
-		Method method = this.getClass().getDeclaredMethod("validateAutoAndOwnerWithCrossParameterConstraint", Auto.class, Owner.class);
+		Method method = this.getClass().getDeclaredMethod("validateAutoAndOwnerWithCrossParameterConstraint", Auto.class, XOwner.class);
 
 		Set<ConstraintViolation<Start>> constraintViolations = factory.getValidator()
 				.forExecutables()
 				.validateParameters(this, method, new Object[] { auto, owner }, Default.class);
 
 		PrintUtils.print(constraintViolations);
-
+*/
 	}
 
 
@@ -80,7 +75,7 @@ public class Start {
 	/*private void validateAutoAndOwner() {
 
 		Auto auto = Auto.of();
-		Owner owner = Owner.of().age(23).name("Dmitrii").drunk(true);
+		XOwner owner = XOwner.of().age(23).name("Dmitrii").drunk(true);
 
 		OwnerAndAutoPair pair = new OwnerAndAutoPair(owner, auto);
 
@@ -99,8 +94,8 @@ public class Start {
 	@SneakyThrows
 	private void validateAutoAndOwnerUsingTuple() {
 
-		Auto auto = Auto.of();
-		Owner owner = Owner.of().age(23).name("Dmitrii").drunk(true);
+		/*Auto auto = Auto.of();
+		XOwner owner = XOwner.of().age(23).name("Dmitrii").drunk(true);
 
 		Method method = this.getClass().getDeclaredMethod("validateWithTuples", Pair.class);
 
@@ -110,7 +105,7 @@ public class Start {
 				.forExecutables()
 				.validateParameters(this, method, new Object[] { ImmutablePair.of(auto, owner) }, Default.class);
 
-		PrintUtils.print(constraintViolations);
+		PrintUtils.print(constraintViolations);*/
 
 	}
 
@@ -125,15 +120,16 @@ public class Start {
 
 				.carport(Carport.of()
 						.model("Almera")
-						.engine("DS654")
-						.country("Deutschland"))
+						.engine("DS654"))
+						//.country("Deutschland"))
 
-				.ownersHistory(new HashMap<String, String>() {
+				/*.ownersHistory(new HashMap<String, String>() {
 					{
 						put("peter@spb.ru", "Peter the First");
 					}
-				})
-				.profile(new Profile("PRODx"));
+				})*/
+				//.profile(new Profile("PRODx"))
+				;
 
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 

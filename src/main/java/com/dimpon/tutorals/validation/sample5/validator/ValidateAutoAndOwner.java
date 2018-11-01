@@ -1,4 +1,4 @@
-package com.dimpon.tutorals.validation.custom;
+package com.dimpon.tutorals.validation.sample5.validator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -7,7 +7,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.LOCAL_VARIABLE;
 import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
@@ -17,7 +16,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = { ValidateAutoAndOwnerValidator.class })
 public @interface ValidateAutoAndOwner {
 
-	String message() default "Owner and Auto";
+	String message() default "XOwner and XAuto";
 
     Class<?>[] groups() default {};
 

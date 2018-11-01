@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class HoundImpl implements Hound {
 
-    @LevelOfBarking(level = 5)
+//    @LevelOfBarking(level = 5)
     @Override
     public void bark() {
       log.info("bark");

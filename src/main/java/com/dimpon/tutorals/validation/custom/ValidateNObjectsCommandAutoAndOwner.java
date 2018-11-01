@@ -1,7 +1,7 @@
 package com.dimpon.tutorals.validation.custom;
 
-import com.dimpon.tutorals.validation.sample1.Auto;
-import com.dimpon.tutorals.validation.sample1.Owner;
+import com.dimpon.tutorals.validation.sample1_1.Auto;
+import com.dimpon.tutorals.validation.sample2.Owner;
 import lombok.AllArgsConstructor;
 
 /**

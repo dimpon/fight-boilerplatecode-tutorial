@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 public class PrintUtils {
 
 	public <T> void print(Set<ConstraintViolation<T>> violations) {
-
 		log.info("\n\n" +
 				violations.stream()
 						.map(v -> v.getMessage() + ": " + v.getInvalidValue())

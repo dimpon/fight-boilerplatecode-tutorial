@@ -1,4 +1,4 @@
-package com.dimpon.tutorals.validation.sample1;
+package com.dimpon.tutorals.validation.sample7;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

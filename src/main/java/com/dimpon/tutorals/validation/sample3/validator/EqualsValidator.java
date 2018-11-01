@@ -1,4 +1,4 @@
-package com.dimpon.tutorals.validation.sample1.validator;
+package com.dimpon.tutorals.validation.sample3.validator;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

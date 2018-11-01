@@ -1,7 +1,5 @@
-package com.dimpon.tutorals.validation.sample1;
+package com.dimpon.tutorals.validation.sample2;
 
-import com.dimpon.tutorals.validation.sample1.validator.Equals;
-import com.dimpon.tutorals.validation.custom.ValidateAutoAndOwner;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -19,15 +17,12 @@ import javax.validation.constraints.Min;
 @Accessors(chain = true, fluent = true)
 @RequiredArgsConstructor(staticName = "of")
 @ToString
-@ValidateAutoAndOwner
+//@ValidateAutoAndOwner
 public class Owner {
 
 	@Min(value = 18, message = "You're too young, bro!")
 	private int age;
 
-	@Equals(value = "Dmitrii", message = "Only Dmitrii is allowed")
-	private String name;
-
-	@AssertFalse(message = "take rest until you're sober")
+	@AssertFalse(message = "Take rest until you're sober")
 	private boolean drunk = false;
 }

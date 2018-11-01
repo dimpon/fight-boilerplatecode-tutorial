@@ -1,9 +1,10 @@
-package com.dimpon.tutorals.validation.sample1;
+package com.dimpon.tutorals.validation.sample1_1;
 
 /**
  * @author Dmitrii Ponomarev
  */
-import com.dimpon.tutorals.validation.sample1.validator.Equals;
+import com.dimpon.tutorals.validation.sample2.Carport;
+import com.dimpon.tutorals.validation.sample7.Profile;
 import lombok.*;
 import lombok.experimental.Accessors;
 
@@ -32,7 +33,7 @@ public class Auto {
 	@Valid
 	private Carport carport;
 
-	@Equals(value = "PROD", message = "Profile must be PROD")
+//	@Equals(value = "PROD", message = "Profile must be PROD")
 	@NotBlank(message = "Profile cannot be blank")
 	@Max(value = 4, message = "More then 4 symbols")
 	private Profile profile;

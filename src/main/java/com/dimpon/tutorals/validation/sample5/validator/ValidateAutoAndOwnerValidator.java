@@ -1,6 +1,6 @@
-package com.dimpon.tutorals.validation.custom;
+package com.dimpon.tutorals.validation.sample5.validator;
 
-import com.dimpon.tutorals.validation.sample1.OwnerAndAutoPair;
+import com.dimpon.tutorals.validation.sample5.OwnerAndAutoPair;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
@@ -17,7 +17,7 @@ public class ValidateAutoAndOwnerValidator implements ConstraintValidator<Valida
 	@Override
 	public boolean isValid(OwnerAndAutoPair value, ConstraintValidatorContext context) {
 
-		if (value.getOwner().drunk() && !value.getAuto().broken())
+		if (value.getOwner().drunk() && value.getAuto().broken())
 			return false;
 
 		return true;
