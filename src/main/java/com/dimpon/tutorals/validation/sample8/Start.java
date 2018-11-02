@@ -4,6 +4,7 @@ import com.dimpon.tutorals.validation.PrintUtils;
 import com.dimpon.tutorals.validation.sample4.Producer;
 import com.dimpon.tutorals.validation.sample8.dto.ZAuto;
 import com.dimpon.tutorals.validation.sample8.dto.ZOwner;
+import com.dimpon.tutorals.validation.sample8.proxy.ValidationWrapper;
 import lombok.SneakyThrows;
 
 import javax.validation.ConstraintViolation;
@@ -19,28 +20,43 @@ import java.util.Set;
  */
 public class Start {
 
-    @SneakyThrows
-    public static void main(String[] args) {
+	@SneakyThrows
+	public static void main(String[] args) {
 
-        ZAuto a = ZAuto.of().broken(true);
-        ZOwner o = ZOwner.of().drunk(true);
+		ZAuto a = ZAuto.of().broken(true);
+		ZOwner o = ZOwner.of().drunk(true);
+
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+
+		ExecutableValidator executableValidator = factory.getValidator().forExecutables();
+
+		Method method = ServiceX.class.getDeclaredMethod("validateAutoAndOwnerWithCrossParameterConstraint", ZAuto.class, ZOwner.class);
+		// Object[] params = { 1 };
+
+		ServiceX service = new ServiceXIml();
+		Object[] params = { a, o };
+
+		Set<ConstraintViolation<ServiceX>> constraintViolationsM = executableValidator
+				.validateParameters(service, method, params);
+
+		PrintUtils.print(constraintViolationsM);
 
 
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		/////////
 
-        ExecutableValidator executableValidator = factory.getValidator().forExecutables();
+		ServiceX s = ValidationWrapper.<ServiceX> builder()
+                .interfaceClass(ServiceX.class)
+                .original(new ServiceXIml())
+                .build()
+                .getProxy();
 
+        try {
+            s.validateAutoAndOwnerWithCrossParameterConstraint(a,o);
 
-        Method method = ServiceX.class.getDeclaredMethod("validateAutoAndOwnerWithCrossParameterConstraint", ZAuto.class,ZOwner.class);
-        //Object[] params = { 1 };
-
-        ServiceX service = new ServiceXIml();
-        Object[] params = { a,o };
-
-        Set<ConstraintViolation<ServiceX>> constraintViolationsM = executableValidator
-                .validateParameters(service, method, params);
-
-        PrintUtils.print(constraintViolationsM);
+            //s.getValue("a");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }

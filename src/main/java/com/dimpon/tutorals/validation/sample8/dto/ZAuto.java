@@ -6,6 +6,9 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.AssertFalse;
+import javax.validation.constraints.AssertTrue;
+
 /**
  * @author Dmitrii Ponomarev
  */
@@ -15,5 +18,7 @@ import lombok.experimental.Accessors;
 @RequiredArgsConstructor(staticName = "of")
 @ToString
 public class ZAuto {
+
+    @AssertFalse(message = "The car is broken!!!")
     private boolean broken;
 }

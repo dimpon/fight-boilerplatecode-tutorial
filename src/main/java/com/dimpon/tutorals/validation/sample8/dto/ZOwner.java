@@ -6,6 +6,8 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.AssertFalse;
+
 /**
  * @author Dmitrii Ponomarev
  */
@@ -15,5 +17,6 @@ import lombok.experimental.Accessors;
 @RequiredArgsConstructor(staticName = "of")
 @ToString
 public class ZOwner {
+    @AssertFalse(message = "The guy is drunk!!!")
     private boolean drunk;
 }

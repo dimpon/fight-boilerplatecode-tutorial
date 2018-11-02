@@ -19,6 +19,11 @@ public class NewHorizont {
 
         Command command = CommandImpl.of().params(new String[]{"a","b","c"});
 
+        dodo(command);
+
+    }
+
+    private static void dodo(Command ann){
 
     }
 }
