@@ -1,7 +1,7 @@
 package com.dimpon.tutorals.validation;
 
-import com.dimpon.tutorals.validation.custom.ValidateNObjects;
-import com.dimpon.tutorals.validation.custom.ValidateNObjectsCommandAutoAndOwner;
+import com.dimpon.tutorals.validation.sample8.validator.ValidateNObjects;
+import com.dimpon.tutorals.validation.sample8.validator.ValidateNObjectsCommandAutoAndOwner;
 import com.dimpon.tutorals.validation.sample2.Carport;
 import com.dimpon.tutorals.validation.sample2.Owner;
 import com.dimpon.tutorals.validation.sample1_1.*;
@@ -35,13 +35,13 @@ public class Start {
 
 	/////////////////////////////////////////
 
-	@ValidateNObjects(value = {
+	/*@ValidateNObjects(value = {
 			@ValidateNObjects.Element(Auto.class),
 			@ValidateNObjects.Element(Owner.class)
 	},
 			command = ValidateNObjectsCommandAutoAndOwner.class,
 			message = "What are you doing, man???"
-	)
+	)*/
 	private void validateAutoAndOwnerWithCrossParameterConstraint(Auto auto, Owner owner) {
 		log.info(auto.toString() + owner.toString());
 		//do some actions, or further validation

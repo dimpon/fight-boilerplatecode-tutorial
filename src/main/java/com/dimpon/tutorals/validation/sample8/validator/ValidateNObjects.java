@@ -1,4 +1,4 @@
-package com.dimpon.tutorals.validation.custom;
+package com.dimpon.tutorals.validation.sample8.validator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -23,14 +23,7 @@ public @interface ValidateNObjects {
 
     Class<? extends ValidateNObjectsValidator.ValidateNObjectsCommand> command();
 
-    Element[] value();
-
-    @Target({ ANNOTATION_TYPE })
-    @Retention(RUNTIME)
-    @Documented
-    public @interface Element {
-        Class<?> value();
-    }
+    Class<?>[] value();
 
 
 }

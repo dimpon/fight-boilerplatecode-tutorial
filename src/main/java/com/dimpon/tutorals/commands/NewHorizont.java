@@ -17,5 +17,8 @@ public class NewHorizont {
         int val = nh.getVal();
         System.out.printf(""+val);
 
+        Command command = CommandImpl.of().params(new String[]{"a","b","c"});
+
+
     }
 }

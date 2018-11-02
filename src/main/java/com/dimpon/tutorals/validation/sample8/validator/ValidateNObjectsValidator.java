@@ -1,4 +1,4 @@
-package com.dimpon.tutorals.validation.custom;
+package com.dimpon.tutorals.validation.sample8.validator;
 
 import lombok.SneakyThrows;
 
@@ -18,13 +18,13 @@ import java.util.stream.Collectors;
 @SupportedValidationTarget(ValidationTarget.PARAMETERS)
 public class ValidateNObjectsValidator implements ConstraintValidator<ValidateNObjects, Object[]> {
 
-	private List<Class<?>> arguments = Collections.EMPTY_LIST;
+	private List<Class<?>> membersClasses = Collections.EMPTY_LIST;
 
 	private Class<? extends ValidateNObjectsCommand> command;
 
 	@Override
 	public void initialize(ValidateNObjects annotation) {
-		arguments = Arrays.stream(annotation.value()).map(ValidateNObjects.Element::value).collect(Collectors.toList());
+		membersClasses = Arrays.stream(annotation.value()).collect(Collectors.toList());
 		command = annotation.command();
 	}
 
@@ -38,13 +38,13 @@ public class ValidateNObjectsValidator implements ConstraintValidator<ValidateNO
 	@Override
 	public boolean isValid(Object[] values, ConstraintValidatorContext context) {
 
-		if (values.length != arguments.size())
-			throw new IllegalArgumentException("Number of annotation element must be equal to arguments in method");
+		if (values.length != membersClasses.size())
+			throw new IllegalArgumentException("Number of annotation element must be equal to membersClasses in method");
 
 		if (command == null)
-			throw new IllegalArgumentException("Neew a command with validation logic");
+			throw new IllegalArgumentException("Need a class with validation logic");
 
-		Class<?>[] classes = arguments.toArray(new Class<?>[0]);
+		Class<?>[] classes = membersClasses.toArray(new Class<?>[0]);
 		ValidateNObjectsCommand comm = command.getConstructor(classes).newInstance(values);
 		return comm.validate();
 	}

@@ -9,6 +9,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target(value = ElementType.TYPE)
 @Retention(RUNTIME)
 public @interface Command {
+
     Class<? extends CommandGranular> value();
 
     CommandElement[] elements() default {};

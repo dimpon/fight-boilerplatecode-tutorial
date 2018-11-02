@@ -1,7 +1,9 @@
-package com.dimpon.tutorals.validation.custom;
+package com.dimpon.tutorals.validation.sample8.validator;
 
 import com.dimpon.tutorals.validation.sample1_1.Auto;
 import com.dimpon.tutorals.validation.sample2.Owner;
+import com.dimpon.tutorals.validation.sample8.dto.ZAuto;
+import com.dimpon.tutorals.validation.sample8.dto.ZOwner;
 import lombok.AllArgsConstructor;
 
 /**
@@ -10,11 +12,11 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ValidateNObjectsCommandAutoAndOwner implements ValidateNObjectsValidator.ValidateNObjectsCommand {
 
-	private final Auto auto;
-	private final Owner owner;
+	private final ZAuto auto;
+	private final ZOwner owner;
 
 	@Override
 	public boolean validate() {
-		return !owner.drunk() || auto.broken();
+		return !owner.drunk() && !auto.broken();
 	}
 }

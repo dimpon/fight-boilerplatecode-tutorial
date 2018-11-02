@@ -1,7 +1,7 @@
 package com.dimpon.tutorals.validation.sample7;
 
 import com.dimpon.tutorals.validation.PrintUtils;
-import com.dimpon.tutorals.validation.sample1_1.validator.Equals;
+import com.dimpon.tutorals.validation.sample3.validator.Equals;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
