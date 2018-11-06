@@ -13,7 +13,7 @@ public class HoundImpl implements Hound {
     public void bark() {
       log.info("bark");
 
-      throw new HoundException("this is hound");
+      //throw new HoundException("this is hound");
 
     }
 

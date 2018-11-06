@@ -25,6 +25,7 @@ public class Start {
 			.addListener((proxy, args) -> log.info("...xxx 3"), "eat", String.class)
 			.build()
 			.getProxy();
+	
 
 
 

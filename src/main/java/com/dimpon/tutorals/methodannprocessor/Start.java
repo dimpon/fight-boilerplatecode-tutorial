@@ -12,13 +12,12 @@ public class Start {
 
 	public static void main(String[] args) {
 
+
+
 		final AnnotationOperator.FunctionWithExceptions<HoundImpl, LevelOfBarking> operation = (h, a) -> {
-
 			//throw new IllegalArgumentException("Bla bla bla");
-
 			int level = a.level();
 			h.bark(level);
-
 		};
 
 		Hound hound = AnnotationOperator.<HoundImpl, LevelOfBarking, Hound> builder()
