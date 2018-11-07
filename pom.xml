@@ -69,12 +69,12 @@
         </dependency>
 
 
-        <dependency>
+       <!-- <dependency>
             <groupId>quickfix</groupId>
             <artifactId>quickfixj-all</artifactId>
             <version>1.5.3</version>
-            <!--<scope>compile</scope>-->
-        </dependency>
+            &lt;!&ndash;<scope>compile</scope>&ndash;&gt;
+        </dependency>-->
 
 
 
@@ -91,6 +91,12 @@
             <artifactId>vavr</artifactId>
             <version>0.9.0</version>
         </dependency>-->
+
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.11</version>
+        </dependency>
 
     </dependencies>
     <build>

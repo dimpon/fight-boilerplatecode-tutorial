@@ -1,6 +1,7 @@
 package com.dimpon.tutorals.lombok.npe;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
@@ -9,14 +10,19 @@ import lombok.Setter;
  */
 
 @Setter
+
 public class NonNullDto {
 
+	@NonNull
+	private String name;
+
     @NonNull
-    private String name;
+	public String pass( String p) {
+		return p.toLowerCase();
+	}
 
-    public String pass(@NonNull String p){
-        return p.toLowerCase();
+    @NonNull
+    public String getName() {
+        return name;
     }
-
-
 }
