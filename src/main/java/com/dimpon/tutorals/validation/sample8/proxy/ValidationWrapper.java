@@ -27,8 +27,8 @@ public class ValidationWrapper<I> {
 
 	private I original;
 
-    private ValidatorFactory $factory = Validation.buildDefaultValidatorFactory();
-    private Validator $validator = $factory.getValidator();
+	private ValidatorFactory $factory = Validation.buildDefaultValidatorFactory();
+	private Validator $validator = $factory.getValidator();
 	private ExecutableValidator $executableValidator = $validator.forExecutables();
 
 	@SuppressWarnings("unchecked")
@@ -50,24 +50,25 @@ public class ValidationWrapper<I> {
 				Set<ConstraintViolation<I>> constraintViolationsP = $executableValidator
 						.validateParameters(original, method, args);
 
-                Set<ConstraintViolation<Object>> collect = Arrays.stream(args).map(o -> $validator.validate(o)).flatMap(Collection::stream).collect(Collectors.toSet());
+				Set<ConstraintViolation<Object>> collect = Arrays.stream(args).map(o -> $validator.validate(o)).flatMap(Collection::stream)
+						.collect(Collectors.toSet());
 
-                Set<ConstraintViolation<? super I>> joined = new HashSet<>();
-                joined.addAll(constraintViolationsP);
-                joined.addAll(collect);
+				Set<ConstraintViolation<? super I>> joined = new HashSet<>();
+				joined.addAll(constraintViolationsP);
+				joined.addAll(collect);
 
-                Object result=null;
+				Object result = null;
 
-                if(joined.size()==0) {
-                    result = method.invoke(original, args);
-                    Set<ConstraintViolation<I>> constraintViolationsR = $executableValidator
-                            .validateReturnValue(original, method, result, Default.class);
-                    joined.addAll(constraintViolationsR);
-                }
+				if (joined.size() == 0) {
+					result = method.invoke(original, args);
+					Set<ConstraintViolation<I>> constraintViolationsR = $executableValidator
+							.validateReturnValue(original, method, result, Default.class);
+					joined.addAll(constraintViolationsR);
+				}
 
-                if(joined.size()>0)
-                    throw new ConstraintViolationException(joined);
-                else
+				if (joined.size() > 0)
+					throw new ConstraintViolationException(joined);
+
 				return result;
 			} catch (InvocationTargetException e) {
 				throw e.getCause();
