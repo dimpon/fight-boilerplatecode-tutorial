@@ -66,6 +66,7 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.25</version>
+
         </dependency>
 
 
@@ -91,6 +92,13 @@
             <artifactId>vavr</artifactId>
             <version>0.9.0</version>
         </dependency>-->
+
+        <dependency>
+            <groupId>org.loguno</groupId>
+            <artifactId>loguno-processor</artifactId>
+            <version>0.0.3</version>
+            <scope>compile</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.reflections</groupId>

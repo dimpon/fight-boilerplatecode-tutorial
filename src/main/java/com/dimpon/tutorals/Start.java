@@ -11,6 +11,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+import java.util.stream.IntStream;
 
 /**
  * @author Dmitrii Ponomarev
@@ -19,9 +20,15 @@ public class Start {
 
 	public static void main(String[] args) throws Exception {
 
+
+		IntStream.range(1,10).forEach(value -> {
+			System.out.println(""+value);
+		});
+
+
 		// Reflections r = new Reflections("com.dimpon.tutorals.watcher");
 
-		Collection<URL> urls = ClasspathHelper.forPackage("javax.validation.constraints");
+		/*Collection<URL> urls = ClasspathHelper.forPackage("javax.validation.constraints");
 
 		for (Iterator<URL> iterator = urls.iterator(); iterator.hasNext(); ) {
 			URL next = iterator.next();
@@ -43,6 +50,6 @@ public class Start {
 		for (Enumeration<JarEntry> entry = file.entries(); entry.hasMoreElements();) {
 			JarEntry jarEntry = entry.nextElement();
 
-		}
+		}*/
 	}
 }

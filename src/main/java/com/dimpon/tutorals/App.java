@@ -1,6 +1,7 @@
 package com.dimpon.tutorals;
 
 import lombok.extern.slf4j.Slf4j;
+import org.loguno.Loguno;
 import org.reflections.Reflections;
 import org.reflections.util.ClasspathHelper;
 
@@ -16,54 +17,45 @@ import java.util.regex.Pattern;
  *
  */
 @Slf4j
-public class App 
-{
-    public static void main( String[] args )
-    {
+@Loguno.Logger
+public class App {
 
+	@Loguno
+	private static void a() {
+		b();
+	}
 
+	@Loguno
+	private static void b() {
+		c();
+	}
 
-        LinkedList<String> classes = new LinkedList<>();
+	@Loguno
+	private static void c() {
 
-        classes.add("a1");
-        classes.add("a2");
-        classes.add("a3");
-        classes.add("a4");
+	    /*StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+        StackTraceElement stackTraceElement = stackTrace[0];*/
 
-        classes.removeLast();
-        classes.removeLast();
-        classes.removeLast();
-
-        //String s = "Hello my name is Joe";
-        //Matcher m = Pattern.compile("Hello my name is ([\\w]*)").matcher(s);
-
-
-       /* String s = "Hello my namef is [xxx] fdfddfd";
-        Matcher m = Pattern.compile("([\\w])").matcher(s);
-
-        if(m.matches())
-        {
-            log.info("Name entered: " + m.group(1));
-        }*/
-
-        Pattern p = Pattern.compile("\\[(.*?)\\]");
-        Matcher m = p.matcher("Where Are You [{}:{}]? your have a [Shift] shift.");
-        while(m.find()) {
-            System.out.println(m.group());
-        }
-
-        Scanner sc = new Scanner("Where Are You [Employee Name]? your have a [Shift] shift..");
-        for (String s; (s = sc.findWithinHorizon("(?<=\\[).*?(?=\\])", 0)) != null;) {
-            System.out.println(s);
-        }
-
-
-        //log.info(String.format("xui voine %s ta ta ta %s.", "A", "B"));
-
-        //log.info(MessageFormat.format("xui voine {1} ta ta ta {0}", "A", "B"));
-
-
-
-
+	    throw new RuntimeException();
     }
+
+	@Loguno
+	public static void main(String[] args) {
+
+	    a();
+
+
+		/*Pattern p = Pattern.compile("\\[(.*?)\\]");
+		Matcher m = p.matcher("Where Are You [{}:{}]? your have a [Shift] shift.");
+		while (m.find()) {
+			System.out.println(m.group());
+		}
+
+		Scanner sc = new Scanner("Where Are You [Employee Name]? your have a [Shift] shift..");
+		for (String s; (s = sc.findWithinHorizon("(?<=\\[).*?(?=\\])", 0)) != null;) {
+			System.out.println(s);
+		}*/
+
+
+	}
 }
