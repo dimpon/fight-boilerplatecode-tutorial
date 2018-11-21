@@ -1,13 +1,8 @@
 package com.dimpon.tutorals.translators;
 
-import com.dimpon.tutorals.validation.sample1_1.Auto;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.MDC;
 
-import java.util.Map;
-import java.util.OptionalInt;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.IntStream;
+import java.util.Random;
 
 /**
  * @author Dmitrii Ponomarev
@@ -15,87 +10,109 @@ import java.util.stream.IntStream;
 @Slf4j
 public class Start {
 
-	@Param(XTranslatorImpl.class)
-	private static Auto a = Auto.of().mileage(12L).vin("ABC");
-
 	public static void main(String[] args) throws Exception {
 
-		/*
-		 * log.info(""+(24^5));
-		 * 
-		 * log.info(""+(29^5));
-		 * 
-		 * log.info(""+(24^29));
-		 */
+		java.util.Random random = new Random();
 
-		int[] all = new int[] { 1, 22, 3, 4, 5, 16, 27, 8, 1, 22, 3, 4, 5, 16, 27, 8 };
+		int SIZE = 40;
 
-		/*
-		 * int res = 0;
-		 * 
-		 * log.info("" + (2 ^ 7));
-		 * 
-		 * for (int i = 0; i < all.length; i++) {
-		 * int i1 = all[i];
-		 * res = res + i1;
-		 * }
-		 * 
-		 * 
-		 * int rr = res & ~res;
-		 * 
-		 * 
-		 * for (int i = 0; i < all.length; i++) {
-		 * int i1 = all[i];
-		 * res = res ^ (i1 + i * i);
-		 * }
-		 * 
-		 * log.info("xor=" + (2 ^ 7));
-		 * 
-		 * log.info("xor=" + ((2 ^ 7) ^ 7));
-		 */
+		// fill the random int array of SIZE
+		int[] values = new int[SIZE];
 
-		AtomicInteger i = new AtomicInteger(1);
+		for (int i = 0; i < SIZE - 2; i = i + 2) {
+			int s = random.nextInt(3000);
+			values[i] = s;
+			values[i + 1] = s;
+		}
 
-		int xorInde = IntStream.of(all).reduce((left, right) -> left ^ (right ^ i.getAndIncrement())).getAsInt();
+		// generate 2 unique elements (the check if they are already in the array must be added)
+		int X = random.nextInt(3000);
+		int Y = random.nextInt(3000);
 
+		log.info("X=" + X);
+		log.info("Y=" + Y);
+		values[SIZE - 2] = X;
+		values[SIZE - 1] = Y;
 
-        int xorInde2 = IntStream.of(all).  reduce((left, right) -> left ^ (right ^ i.getAndIncrement())).getAsInt();
+		// shuffle array
+		shuffleArray(values);
 
-		int xor = IntStream.of(all).reduce((left, right) -> left ^ right).getAsInt();
-
-
-
-		log.info(Integer.toBinaryString(8 | 0b1000000));
-		log.info(Integer.toBinaryString(8 >> 1 | 0b1000000));
-		log.info(Integer.toBinaryString(8 >> 2 | 0b1000000));
-		log.info(Integer.toBinaryString(8 >> 3 | 0b1000000));
-
-		log.info("8=" + 48);
-		log.info("8=" + (48 >> 1));
-		log.info("8=" + (48 >> 2));
-		log.info("8=" + (48 >> 3));
-
-		MDC.put("auto", "some value a");
-
-		Map<String, String> copyOfContextMap = MDC.getCopyOfContextMap();
-
-		String auto = MDC.get("auto");
-
-		Param a = Start.class.getDeclaredField("a").getAnnotation(Param.class);
-
-		Class<? extends XTranslator> aClass = a.value()[0];
-
-		XTranslator xTranslator = aClass.newInstance();
-
-		XTranslator xTranslator1 = XTranslatorImpl.class.newInstance();
-
-		Start start = new Start();
-
-		String translate = xTranslator.translate(start.a);
-
-		log.info(MDC.get("a") + translate);
-
-		MDC.remove("a");
-
+		// find 2 unique elemens and print
+		findAndPrint(values);
 	}
+
+	/**
+	 * basically we know 2 values, a and b:
+	 *
+	 * x^y = b
+	 *
+	 * (x << x)^(y << y) = a
+	 *
+	 * knowing this we can find x and y
+	 */
+	private static void findAndPrint(int[] all) {
+
+		int a = 0;
+		int b = 0;
+
+		for (int u : all) {
+			a = a ^ (cycleShiftLeft(u, u));
+			b = b ^ u;
+		}
+
+		log.info("xorWithShift=" + a);
+		log.info("xor=" + b);
+
+		int x = 0;
+
+		// the formula for finding x:
+		// x ^ (b ^ x << b ^ x >> x) = a >> x
+		for (;;) {
+			x++;
+			int l = left(b, x);
+			int r = right(a, x);
+			if (l == r)
+				break;
+		}
+
+		log.info("X=" + x);
+		log.info("Y=" + (b ^ x));
+	}
+
+	private static int right(int a, int x) {
+		return cycleShiftRight(a, x);
+	}
+
+	private static int left(int b, int x) {
+		return x ^ (cycleShiftRight(cycleShiftLeft(b ^ x, b ^ x), x));
+	}
+
+	// shift <=32
+	private static int cycleShiftLeft(int val, int shift) {
+		int i = shift % 32;// real shift
+		int a1 = val >>> 32 - i;
+		int a2 = val << i;
+		return a1 | a2;
+	}
+
+	private static int cycleShiftRight(int val, int shift) {
+		int i = shift % 32;// real shift
+		int a1 = val << 32 - i;
+		int a2 = val >>> i;
+		return a1 | a2;
+	}
+
+	private static void shuffleArray(int[] array) {
+		int index;
+		Random random = new Random();
+		for (int i = array.length - 1; i > 0; i--) {
+			index = random.nextInt(i + 1);
+			if (index != i) {
+				array[index] ^= array[i];
+				array[i] ^= array[index];
+				array[index] ^= array[i];
+			}
+		}
+	}
+
 }
