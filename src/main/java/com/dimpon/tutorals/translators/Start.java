@@ -14,7 +14,7 @@ public class Start {
 
 		java.util.Random random = new Random();
 
-		int SIZE = 40;
+		int SIZE = 140;
 
 		// fill the random int array of SIZE
 		int[] values = new int[SIZE];
@@ -25,7 +25,7 @@ public class Start {
 			values[i + 1] = s;
 		}
 
-		// generate 2 unique elements (the check if they are already in the array must be added)
+		// generate 2 unique elements and put it in  the end of array (the check if they are already in the array must be added)
 		int X = random.nextInt(3000);
 		int Y = random.nextInt(3000);
 
@@ -37,7 +37,7 @@ public class Start {
 		// shuffle array
 		shuffleArray(values);
 
-		// find 2 unique elemens and print
+		// find 2 unique elements and print
 		findAndPrint(values);
 	}
 
