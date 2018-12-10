@@ -1,5 +1,5 @@
 package com.dimpon.tutorals.lombok.builders.sample5_transformator;
 
-public interface Transformator<S, R> {
+public interface Transformer<S, R> {
 	R transform(S source);
 }

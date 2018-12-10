@@ -1,7 +1,6 @@
 package com.dimpon.tutorals.lombok.builders.sample5_transformator;
 
 import lombok.Data;
-import lombok.Getter;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,7 +22,7 @@ public class Start {
 
 		//////////////////////////////////////////////
 
-		Transformator<FixData, TradenIntention> transformator = TransformatorImpl.<FixData, TradenIntention> builder()
+		Transformer<FixData, TradenIntention> transformator = TransformerImpl.<FixData, TradenIntention> builder()
 				.emptyResult(TradenIntention::new)
 				.operation((ti, fd) -> ti.currency(fd.params.get("currency")))
 				.operation((ti, fd) -> ti.amount(fd.params.get("amount")))
@@ -36,7 +35,7 @@ public class Start {
 
 	}
 
-	@Getter
+	//@Getter
 	private static class FixData {
 		Map<String, String> params = new HashMap<String, String>() {
 			{

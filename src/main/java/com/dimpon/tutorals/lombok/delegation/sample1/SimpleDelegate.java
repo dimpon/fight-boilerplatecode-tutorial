@@ -1,6 +1,5 @@
 package com.dimpon.tutorals.lombok.delegation.sample1;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Delegate;
 import lombok.extern.slf4j.Slf4j;
@@ -21,28 +20,27 @@ public class SimpleDelegate {
 
 	interface AllowedMethods {
 		void forEach(Consumer action);
-
 		int size();
 	}
 
-	interface OverriddenMehods {
+	interface OverriddenMethods {
 		int size();
 	}
 
 
-	@Delegate(excludes = OverriddenMehods.class, types = AllowedMethods.class)
+	@Delegate(excludes = OverriddenMethods.class, types = AllowedMethods.class)
 	private final Collection<String> element;
+
+
 
 	public int size() {
 		if (element.size() == 0)
 			return 1000;
-
 		return element.size();
 	}
 
 	public static void main(String[] args) {
 		SimpleDelegate delegate = SimpleDelegate.of(new ArrayList<>());
-
 		log.info("size = " + delegate.size());
 		delegate.forEach(o -> {
 		});

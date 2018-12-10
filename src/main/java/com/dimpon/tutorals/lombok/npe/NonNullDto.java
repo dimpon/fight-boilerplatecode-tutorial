@@ -10,7 +10,6 @@ import lombok.Setter;
  */
 
 @Setter
-
 public class NonNullDto {
 
 	@NonNull
@@ -21,7 +20,9 @@ public class NonNullDto {
 		return p.toLowerCase();
 	}
 
-    @NonNull
+	public void passs(@NonNull String pp){}
+
+
     public String getName() {
         return name;
     }

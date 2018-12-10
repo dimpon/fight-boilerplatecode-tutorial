@@ -11,7 +11,7 @@ import java.util.function.Supplier;
  * @author Dmitrii Ponomarev
  */
 @Builder
-public class TransformatorImpl<S, R> implements Transformator<S,R> {
+public class TransformerImpl<S, R> implements Transformer<S,R> {
 
 	@Builder.Default
 	private final Supplier<R> emptyResult = () -> {
