@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 
 public class JustAClass {
 
-	@Setter(onMethod_ = @Loguno("Setter for {} in called. New value:{}"))
+	@Setter(onMethod_ = @Loguno("Setter for {} in called. New value:{}"),onParam_ = @Loguno)
 	String name;
 
 	private String convertToUpperCase(@Loguno String s) throws @Loguno NullPointerException {
@@ -29,7 +29,7 @@ public class JustAClass {
 
 		List<String> l = Stream.<String> builder().add("A").add("B").add("C").build().collect(Collectors.toList());
 
-		for (@Loguno String ll : l) {
+		for (@Loguno("ZZZZZ {}={}") String ll : l) {
 
 		}
 
@@ -39,8 +39,8 @@ public class JustAClass {
 	public static void main(String[] args) {
 		JustAClass c = new JustAClass();
 
-		//c.setName("Vasya Pupkin");
-		String small = c.convertToUpperCase("small");
+		c.setName("Vasya Pupkin");
+		String small = c.convertToUpperCase(null);
 
 	}
 }
