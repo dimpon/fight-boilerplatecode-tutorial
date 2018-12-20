@@ -56,7 +56,7 @@ public class Start {
 	@SneakyThrows
 	private void validateWithCrossParameterConstraint() {
 		Auto auto = Auto.of();
-		/*XOwner owner = XOwner.of().age(23).name("Dmitrii").drunk(true);
+		/*XOwner owner = XOwner.create().age(23).name("Dmitrii").drunk(true);
 
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 
@@ -75,8 +75,8 @@ public class Start {
 
 	/*private void validateAutoAndOwner() {
 
-		Auto auto = Auto.of();
-		XOwner owner = XOwner.of().age(23).name("Dmitrii").drunk(true);
+		Auto auto = Auto.create();
+		XOwner owner = XOwner.create().age(23).name("Dmitrii").drunk(true);
 
 		OwnerAndAutoPair pair = new OwnerAndAutoPair(owner, auto);
 
@@ -95,8 +95,8 @@ public class Start {
 	@SneakyThrows
 	private void validateAutoAndOwnerUsingTuple() {
 
-		/*Auto auto = Auto.of();
-		XOwner owner = XOwner.of().age(23).name("Dmitrii").drunk(true);
+		/*Auto auto = Auto.create();
+		XOwner owner = XOwner.create().age(23).name("Dmitrii").drunk(true);
 
 		Method method = this.getClass().getDeclaredMethod("validateWithTuples", Pair.class);
 
@@ -104,7 +104,7 @@ public class Start {
 
 		Set<ConstraintViolation<Start>> constraintViolations = factory.getValidator()
 				.forExecutables()
-				.validateParameters(this, method, new Object[] { ImmutablePair.of(auto, owner) }, Default.class);
+				.validateParameters(this, method, new Object[] { ImmutablePair.create(auto, owner) }, Default.class);
 
 		PrintUtils.print(constraintViolations);*/
 

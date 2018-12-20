@@ -18,5 +18,11 @@ public @interface Bird {
 		X1, X2;
 	}
 
-	static class $L{}
+
+	static class $L{public static void INFO(String ... arg){}}
+
+
+	class ${
+		public static void INFO(String ... arg){}
+	}
 }

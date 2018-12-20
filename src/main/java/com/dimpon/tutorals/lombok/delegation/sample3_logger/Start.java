@@ -11,7 +11,7 @@ import java.util.logging.Level;
 //@Slf4j
 public class Start {
 
-	/*private static final LazyLogger LOG = LazyLogger.of((() ->
+	/*private static final LazyLogger LOG = LazyLogger.create((() ->
 			LoggerFactory.getLogger(Start.class))
 	);
 */

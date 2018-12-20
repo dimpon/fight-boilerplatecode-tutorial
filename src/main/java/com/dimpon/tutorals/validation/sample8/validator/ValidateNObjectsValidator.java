@@ -39,7 +39,7 @@ public class ValidateNObjectsValidator implements ConstraintValidator<ValidateNO
 	public boolean isValid(Object[] values, ConstraintValidatorContext context) {
 
 		if (values.length != membersClasses.size())
-			throw new IllegalArgumentException("Number of annotation element must be equal to membersClasses in method");
+			throw new IllegalArgumentException("Number create annotation element must be equal to membersClasses in method");
 
 		if (command == null)
 			throw new IllegalArgumentException("Need a class with validation logic");
