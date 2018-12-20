@@ -14,7 +14,7 @@ public class XFunction<T, R> implements Function<T, R> {
 
 	private final List<Function> functions;
 
-	private XFunction(XFunctionBuilder<R, T, R> builder) {
+	private XFunction(XFunctionBuilder<R, T> builder) {
 		this.functions = builder.functions;
 	}
 
@@ -24,36 +24,37 @@ public class XFunction<T, R> implements Function<T, R> {
 		return (R) functions.stream().reduce(Function.identity(), Function::andThen).apply(t);
 	}
 
-	static class XFunctionBuilder<S, T, R> {
+	static class XFunctionBuilder<S, T> {
 
-		public static <T> XFunctionBuilder<T, T, ?> builder() {
+		public static <T> XFunctionBuilder<T, T> builder() {
 			return new XFunctionBuilder<>();
 		}
 
 		List<Function> functions = new ArrayList<>();
 
 		@SuppressWarnings("unchecked")
-		public <V> XFunctionBuilder<V, T, R> addFunction(Function<? super S, ? extends V> function) {
+		public <V> XFunctionBuilder<V, T> addFunction(Function<? super S, ? extends V> function) {
 			functions.add(function);
-			return (XFunctionBuilder<V, T, R>) this;
+			return (XFunctionBuilder<V, T>) this;
 		}
 
 		@SuppressWarnings("unchecked")
 		public XFunction<T, S> create() {
-			return new XFunction<>((XFunctionBuilder<S, T, S>) this);
+			return new XFunction<>((XFunctionBuilder<S, T>) this);
 		}
 
 	}
 
 	public static void main(String[] args) {
 
+		Function<A, B> ab = a -> new B(a);
+
 		Function<A, E> adxFunction = XFunctionBuilder.<A> builder()
-				.addFunction(a -> new B(a))
+				.addFunction(ab)
 				.addFunction(b -> new C(b))
 				.addFunction(c -> new D(c))
 				.addFunction(d -> new E(d))
 				.create();
-
 
 		E transform = adxFunction.apply(new A(123));
 
