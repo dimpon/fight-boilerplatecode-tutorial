@@ -1,5 +1,6 @@
 package com.dimpon.tutorals.chain;
 
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
@@ -14,7 +15,32 @@ import java.util.function.Function;
 @Slf4j
 public class ChainMe<S, R> {
 
-	private List<Function<?, ?>> functions = new ArrayList<>();
+	// List<Function<?, ?>> functions;
+
+	public ChainMe() {
+	}
+
+	ChainBuilder<R> bu;
+
+	private ChainBuilder<S> newBu() {
+		return new ChainBuilder<>();
+	}
+
+	void serBu(ChainBuilder<R> bu) {
+		this.bu = bu;
+	}
+
+	class ChainBuilder<S> {
+
+		List<Function<?, ?>> functions = new ArrayList<>();
+
+		@SuppressWarnings("unchecked")
+		private <V> ChainBuilder<V> addFunction(Function<? super S, ? extends V> function) {
+			functions.add(function);
+			return (ChainBuilder<V>) this;
+		}
+
+	}
 
 	/*
 	 * @SuppressWarnings("unchecked")
@@ -24,19 +50,13 @@ public class ChainMe<S, R> {
 	 * }
 	 */
 
-	@SuppressWarnings("unchecked")
-	private <V> ChainMe<S, V> addFunction(Function<R,  V> function) {
-		functions.add(function);
-		return (ChainMe<S, V>) this;
-	}
-
-	public R transform(Object source) {
+	public R transform(S source) {
 
 		Object rez = source;
 
-		for (int i = 0; i < functions.size(); i++) {
+		for (int i = 0; i < bu.functions.size(); i++) {
 
-			Function function = functions.get(i);
+			Function function = bu.functions.get(i);
 			rez = function.apply(rez);
 
 		}
@@ -44,8 +64,17 @@ public class ChainMe<S, R> {
 
 	}
 
+/*	private Function<S, R> combineFunctions() {
+
+		return bu.functions.stream().reduce(Function.identity(),(function, function2) -> function.andThen(function2));
+
+		//return functions.stream().reduce(Function.identity(), Function::andThen);
+	}*/
+
+
+
 	/*
-	 * default <V> Function<T, V> andThen(Function<? super R, ? extends V> after) {
+	 * <V> Function<T, V> andThen(Function<? super R, ? extends V> after) {
 	 * Objects.requireNonNull(after);
 	 * return (T t) -> after.apply(apply(t));
 	 * }
@@ -72,12 +101,31 @@ public class ChainMe<S, R> {
 		 * .transform(123);
 		 */
 
-		E transform = new ChainMe<Integer, A>()
-				.addFunction(a -> new B(a))
-				.addFunction(b -> new C(b))
-				.addFunction(c -> new D(c))
-				.addFunction(d -> new E(d))
-				.transform(new A(1));
+		/*
+		 * E transform = new ChainMe<Integer, A>()
+		 * .addFunction(a -> new B(a))
+		 * .addFunction(b -> new C(b))
+		 * .addFunction(c -> new D(c))
+		 * .addFunction(d -> new E(d))
+		 * .transform(new A(1));
+		 */
+
+		ChainMe<A, E> integerEChainMe = new ChainMe<>();
+
+		integerEChainMe.serBu(
+				integerEChainMe.newBu()
+						.addFunction(a -> new B(a))
+						.addFunction(b -> new C(b))
+						.addFunction(c -> new D(c))
+						.addFunction(d -> new E(d))
+		);
+
+		E transform = integerEChainMe.transform(new A(123));
+
+
+		log.info("rezz==" + transform.toString());
+
+		// .transform(Integer.valueOf(12));
 
 	}
 
