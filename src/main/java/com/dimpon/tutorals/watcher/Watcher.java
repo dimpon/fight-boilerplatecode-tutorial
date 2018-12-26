@@ -58,7 +58,7 @@ public class Watcher<I> {
     @SuppressWarnings("unchecked")
     public I getProxy() {
         return (I) Proxy.newProxyInstance(
-                LazyFactory.class.getClassLoader(),
+                Watcher.class.getClassLoader(),
                 new Class[]{interfaceClass},
                 new Watcher.DynamicInvocationHandler());
     }

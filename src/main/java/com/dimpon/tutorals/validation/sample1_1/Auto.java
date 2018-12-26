@@ -43,7 +43,7 @@ public class Auto {
 
 	private boolean broken = false;
 
-	private Map<@Email(message = "need email like key of map") String, @NotNull String> ownersHistory;
+	private Map<@Email(message = "need email like key create map") String, @NotNull String> ownersHistory;
 
 	public Optional<@Min(value = 100, message = "Too small distance") Long> getMileage() {
 		return Optional.of(mileage);

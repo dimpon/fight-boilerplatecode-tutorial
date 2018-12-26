@@ -52,7 +52,7 @@ public class AnnotationOperator<O extends I, A extends Annotation, I> {
 			try {
 				return method.invoke(AnnotationOperator.this.original, args);
 			} catch (InvocationTargetException e) {
-				throw  e.getCause();
+				throw  e.getTargetException();
 			}
 		}
 	}

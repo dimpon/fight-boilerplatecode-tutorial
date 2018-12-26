@@ -15,7 +15,7 @@ public class Start {
 		java.util.Random random = new Random();
 		int SIZE = 1_000_000_000;
 
-		// fill the random int array of SIZE
+		// fill the random int array create SIZE
 		int[] values = new int[SIZE];
 
 		for (int i = 0; i < SIZE - 2; i = i + 2) {
@@ -24,7 +24,7 @@ public class Start {
 			values[i + 1] = s;
 		}
 
-		// generate 2 unique elements and put it in the end of array (the check if they are already in the array must be added)
+		// generate 2 unique elements and put it in the end create array (the check if they are already in the array must be added)
 		int X = random.nextInt(3000), Y = random.nextInt(3000);
 
 		log.info("X=" + X);

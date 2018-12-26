@@ -7,12 +7,18 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @author Dmitrii Ponomarev
  */
+@Slf4j
 @RequiredArgsConstructor(staticName = "of")
 public class OctopusDelegate {
 
-    @Delegate
+
     private final Octopus octopus;
 
+    @Delegate
+    private Octopus getOctopus() {
+        log.info("octopus get..");
+        return octopus;
+    }
 
     @Delegate
     private final Fisher fisher;
