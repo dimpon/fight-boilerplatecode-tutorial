@@ -14,6 +14,7 @@ import javax.validation.ValidatorFactory;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -41,9 +42,11 @@ public class MyAuto {
 
 
 
+
+
 	public static void main(String[] args) {
 
-        List<String> pr = Stream.of("a", "b", "b", "").collect(Collectors.toList());
+        List<String> pr = Arrays.asList("a", "b", "b", "");
 
         MyAuto myAuto = MyAuto.of()
                 .mileage(10000L)
