@@ -26,9 +26,6 @@ public class StartPlayWithLombok {
 
         System.out.println(collect);
 
-        SimpleDTO b = new SimpleDTO();
-        b.setxAge(1);
-        String name = b.getMyName();
 
 
     }
