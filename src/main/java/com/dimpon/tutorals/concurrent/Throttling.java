@@ -141,9 +141,9 @@ public class Throttling {
 
 		/*
 		 * MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
-		 * ObjectName name = new ObjectName("com.dimpon.tutorals.concurrent:type=Throttling");
+		 * ObjectName myName = new ObjectName("com.dimpon.tutorals.concurrent:type=Throttling");
 		 * Throttling mbean = new Throttling();
-		 * mbs.registerMBean(mbean, name);
+		 * mbs.registerMBean(mbean, myName);
 		 * 
 		 * mbean.goIt();
 		 */

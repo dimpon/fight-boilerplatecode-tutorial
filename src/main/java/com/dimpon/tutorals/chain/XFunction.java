@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * @author Dmitrii Ponomarev
@@ -31,6 +32,7 @@ public class XFunction<T, R> implements Function<T, R> {
 		}
 
 		List<Function> functions = new ArrayList<>();
+		List<Supplier> suppliers = new ArrayList<>();
 
 		@SuppressWarnings("unchecked")
 		public <V> XFunctionBuilder<V, T> addFunction(Function<? super S, ? extends V> function) {
@@ -39,8 +41,16 @@ public class XFunction<T, R> implements Function<T, R> {
 		}
 
 		@SuppressWarnings("unchecked")
+		public <V> XFunctionBuilder<V, T> addFunction(Supplier<Function<? super S, ? extends V>> supplier) {
+			suppliers.add(supplier);
+			return (XFunctionBuilder<V, T>) this;
+		}
+
 		public XFunction<T, S> create() {
-			return new XFunction<>((XFunctionBuilder<S, T>) this);
+
+
+			
+			return new XFunction<>(this);
 		}
 
 	}
@@ -56,7 +66,16 @@ public class XFunction<T, R> implements Function<T, R> {
 				.addFunction(d -> new E(d))
 				.create();
 
-		E transform = adxFunction.apply(new A(123));
+		Function<A, E> adxFunction1 = XFunctionBuilder.<A> builder()
+				.addFunction(a -> new B(a))
+				.addFunction(XFunctionBuilder.<B> builder()
+						.addFunction(b -> new C(b))
+						.addFunction(c -> new D(c))
+						.create())
+				.addFunction(d -> new E(d))
+				.create();
+
+		E transform = adxFunction1.apply(new A(123));
 
 		log.info("rezz==" + transform.toString());
 

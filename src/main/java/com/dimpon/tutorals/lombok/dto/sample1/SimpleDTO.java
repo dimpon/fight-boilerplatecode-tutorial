@@ -11,15 +11,15 @@ import java.util.Map;
 
 // @Getter
 // @Setter
-@ToString
-@EqualsAndHashCode
-// @Data
+// @ToString
+// @EqualsAndHashCode
+@Data
 public class SimpleDTO {
 
-	private String name, familyName;
-	private int age;
+	private String myName, familyName;
+	private int xAge;
 
-	//@Getter(value = AccessLevel.PUBLIC, onMethod_ = { @Deprecated })
+	// @Getter(value = AccessLevel.PUBLIC, onMethod_ = { @Deprecated })
 	// @Setter(value = AccessLevel.PROTECTED, onMethod = @__({@Deprecated}))
 	private String position;
 

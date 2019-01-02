@@ -1,11 +1,11 @@
 package com.dimpon.tutorals.lombok;
 
 
+import com.dimpon.tutorals.lombok.dto.sample1.SimpleDTO;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * @author Dmitrii Ponomarev
@@ -25,6 +25,10 @@ public class StartPlayWithLombok {
         String collect = map.entrySet().stream().sorted().map(e -> e.getKey() + " " + e.getValue()).collect(Collectors.joining(","));
 
         System.out.println(collect);
+
+        SimpleDTO b = new SimpleDTO();
+        b.setxAge(1);
+        String name = b.getMyName();
 
 
     }

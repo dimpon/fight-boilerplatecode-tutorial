@@ -36,7 +36,7 @@ public class AdaptersConfiguration {
 	 * public static class AdaptersConfigurationBuilder {
 	 * public AdaptersConfiguration create() {
 	 * //write your logic
-	 * return new AdaptersConfiguration(this.name, this.host, this.environment,this.port);
+	 * return new AdaptersConfiguration(this.myName, this.host, this.environment,this.port);
 	 * }
 	 * }
 	 */

@@ -7,6 +7,7 @@ import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.RequestLogHandler;
 import org.eclipse.jetty.servlet.DefaultServlet;
 
+import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 
 import javax.servlet.DispatcherType;
@@ -37,7 +38,14 @@ public class StartJetty
 
 
         context.addServlet(EmptyServlet.class, "/");
-        context.addFilter(HalloFilter.class,"/", EnumSet.of(DispatcherType.REQUEST));
+        FilterHolder filterHolder = context.addFilter(HalloFilter.class, "/", EnumSet.of(DispatcherType.REQUEST));
+
+        filterHolder.setInitParameter("maxRequestsPerSec","5");
+        filterHolder.setInitParameter("delayMs","-1");
+
+        filterHolder.setInitParameter("throttleMs","30");
+
+
 
         HandlerCollection handlerCol = new HandlerCollection();
         handlerCol.addHandler(context);

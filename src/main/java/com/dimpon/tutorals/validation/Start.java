@@ -56,7 +56,7 @@ public class Start {
 	@SneakyThrows
 	private void validateWithCrossParameterConstraint() {
 		Auto auto = Auto.of();
-		/*XOwner owner = XOwner.create().age(23).name("Dmitrii").drunk(true);
+		/*XOwner owner = XOwner.create().xAge(23).myName("Dmitrii").drunk(true);
 
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 
@@ -76,7 +76,7 @@ public class Start {
 	/*private void validateAutoAndOwner() {
 
 		Auto auto = Auto.create();
-		XOwner owner = XOwner.create().age(23).name("Dmitrii").drunk(true);
+		XOwner owner = XOwner.create().xAge(23).myName("Dmitrii").drunk(true);
 
 		OwnerAndAutoPair pair = new OwnerAndAutoPair(owner, auto);
 
@@ -96,7 +96,7 @@ public class Start {
 	private void validateAutoAndOwnerUsingTuple() {
 
 		/*Auto auto = Auto.create();
-		XOwner owner = XOwner.create().age(23).name("Dmitrii").drunk(true);
+		XOwner owner = XOwner.create().xAge(23).myName("Dmitrii").drunk(true);
 
 		Method method = this.getClass().getDeclaredMethod("validateWithTuples", Pair.class);
 

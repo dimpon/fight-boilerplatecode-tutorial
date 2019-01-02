@@ -27,6 +27,19 @@ public class JustAClass {
 			s = s + i;
 		}*/
 
+
+
+		@Loguno("custom message1")
+		Object $loguno_val1=null;
+
+		LOG.info("bla-bla");
+
+
+
+
+		Object $loguno_val2;
+
+
 		List<String> l = Stream.<String> builder().add("A").add("B").add("C").build().collect(Collectors.toList());
 
 		for (@Loguno("ZZZZZ {}={}") String ll : l) {

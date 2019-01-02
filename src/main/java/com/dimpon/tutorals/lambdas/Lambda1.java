@@ -20,7 +20,7 @@ public class Lambda1 {
 	private String doIt(final String name) {
 		AtomicInteger x = new AtomicInteger((new Random()).nextInt());
 
-		//Supplier<String> s = () -> name + num + x.getAndIncrement();
+		//Supplier<String> s = () -> myName + num + x.getAndIncrement();
 
 		Supplier<String> s = () -> Integer.toString(num++);
 

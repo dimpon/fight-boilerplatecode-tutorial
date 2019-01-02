@@ -11,7 +11,7 @@ public class Start {
         String name = dto.getName();
 
         //dto.pass(null);
-        //dto.setName(null);
+        //dto.setMyName(null);
 
 
     }
